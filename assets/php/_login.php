@@ -3,6 +3,7 @@ if (isset($_POST['email'])){
 extract($_POST);
 if (session_status() == PHP_SESSION_NONE) session_start();
 include '_connect.php';
+$password = md5($password);
 $log_sql ="SELECT * FROM users WHERE email='$email' AND password='$password'";
 $log_result=mysqli_query($db, $log_sql) or die( mysqli_error($db) );
 $log_count= mysqli_num_rows ($log_result);

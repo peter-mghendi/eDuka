@@ -23,6 +23,7 @@
             $tkn_res = mysqli_query($db, $tkn_query);
             $tkn_count = mysqli_num_rows($tkn_res);
         } while ($tkn_count > 0);
+        $password = md5($password);
         $status = "active";
 
         $eml_query = "SELECT * FROM users WHERE email = '$email'";
