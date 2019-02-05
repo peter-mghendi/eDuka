@@ -20,3 +20,7 @@ nav>div>ul>li.nav-item:hover{
     border: 1px #212121 solid;
     transition-duration: 500ms;
 }
+
+.dropdown-menu{
+    margin-bottom: 16px;
+}
