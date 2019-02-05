@@ -19,6 +19,18 @@
     </ul>
 
     <ul class="nav navbar-nav ml-auto navbar-right">
+    <!-- <li class="nav nav-item <?php echo ($page=="profile")||($page=="wishlist")||($page=="cart")?"active":"" ?>">
+          <a class="nav-link <?php echo ($page=="profile")?"active":"" ?>" href="profile.php">
+            <span class="fa fa-user"></span><?php echo $_SESSION['user'] ?></a>
+          <a class="nav-link dropdown-toggle dropdown-toggle-split <?php echo ($page=="profile")?"active":($page=="wishlist")?"active":($page=="cart")?"active":"" ?>"
+            data-toggle="dropdown" data-target="#dropdown-menu" href="javascript:void(0)"></a>
+
+        <div class="dropdown-menu" id="dropdown-menu">
+            <a class="nav-item dropdown-item  <?php echo ($page=="wishlist")?"active":"" ?>" href="wishlist.php"><span class="fa fa-user"></span> Wishlist</a>
+            <a class="nav-item dropdown-item  <?php echo ($page=="cart")?"active":"" ?>" href="cart.php"><span class="fa fa-user"></span> Shopping Cart</a>
+          </div>
+      </li> -->
+
       <li class="nav-item dropdown <?php echo ($page=="profile")?"active":($page=="wishlist")?"active":($page=="cart")?"active":"" ?>">
           <a class="nav-link dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" data-target="#dropdown-menu" href="javascript:void(0)">
           <span class="fa fa-user"></span> <?php echo $_SESSION['user'] ?> </a>
@@ -27,7 +39,8 @@
             <a class="nav-item dropdown-item  <?php echo ($page=="wishlist")?"active":"" ?>" href="wishlist.php"><span class="fa fa-user"></span> Wishlist</a>
             <a class="nav-item dropdown-item  <?php echo ($page=="cart")?"active":"" ?>" href="cart.php"><span class="fa fa-user"></span> Shopping Cart</a>
           </div>
-</li>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="assets/php/_logout.php">Log Out
         <span class="fa fa-sign-in"></span></a>
