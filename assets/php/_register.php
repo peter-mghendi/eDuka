@@ -23,13 +23,14 @@
             $tkn_res = mysqli_query($db, $tkn_query);
             $tkn_count = mysqli_num_rows($tkn_res);
         } while ($tkn_count > 0);
+        $status = "active";
 
         $eml_query = "SELECT * FROM users WHERE email = '$email'";
         $eml_res = mysqli_query($db, $eml_query);
         $eml_count = mysqli_num_rows($eml_res);
 
         if ($eml_count==0){
-            $reg_query = "INSERT INTO users VALUES (null, '$token', '$name', '$email', '$password')";
+            $reg_query = "INSERT INTO users VALUES (null, '$token', '$name', '$email', '$password', '$status')";
             mysqli_query($db, $reg_query);
             $_SESSION['token'] = $token;
             $_SESSION['user'] = $name;
