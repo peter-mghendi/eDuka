@@ -1,0 +1,22 @@
+nav{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.19);
+}
+
+nav>div>ul>li.nav-item{
+    border: 1px white solid;
+    border-radius: 32px;
+    margin: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+nav>div>ul>li.nav-item.active{
+    border: 1px #212121 solid;
+    transition-duration: 500ms;
+}
+
+nav>div>ul>li.nav-item:hover{
+    border: 1px #212121 solid;
+    transition-duration: 500ms;
+}
