@@ -30,3 +30,34 @@ nav>div>ul>li.nav-item:hover{
 .margin-top{
     margin-top: 32px;
 }
+
+.secondary-nav{
+    box-shadow: none;
+}
+
+.secondary-nav>ul>li{
+    border: 1px black solid;
+    border-radius: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    transition-duration: 500ms;
+}
+
+.secondary-nav>ul>li:hover{
+    border: 1px darkgray solid;
+    transition-duration: 500ms;
+}
+
+.secondary-nav>ul>li>a{
+    color: black;
+    transition-duration: 500ms;
+}
+
+.secondary-nav>ul>li>a:hover{
+    color: darkgray;
+    transition-duration: 500ms;
+}

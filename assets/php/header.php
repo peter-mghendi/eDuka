@@ -20,11 +20,11 @@
 
 <main role="main">
 
-<div class="container margin-top">
+  <div class="container margin-top">
     <div class="row">
-    <div class="col-sm3"></div>
-    <div class="col-sm6">
-      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="col-sm3"></div>
+      <div class="col-sm6">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="assets/images/smartHD.jpg" class="d-block w-100" alt="...">
@@ -44,21 +44,28 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
+        </div>
+        <div class="col-sm3"></div>
       </div>
-      <div class="col-sm3"></div>
     </div>
   </div>
-  </div>
 
+  <nav class="container secondary-nav">
+    <ul class="nav justify-content-center">
+      <li class="nav-item"><a href="#new" class="nav-link">New</a></li>
+      <li class="nav-item"><a href="#popular" class="nav-link">Popluar</a></li>
+      <li class="nav-item"><a href="#flash" class="nav-link">Flash Sales</a></li>
+    </ul>
+  </nav>
   <div class="album py-5 bg-light">
     <div class="container">
-
+      <div class="container-fluid" id="new">
+      <h3>New Items</h3><h5 class="ml-auto align-right"><a href="#">SEE MORE >></a></h5><hr>
       <div class="row">
-        <div class="col-md-3">
-          <div class="card mb-3 shadow-sm">
+        <?php for($i=0; $i<4; $i++) 
+          echo '<div class="col-md-3"><div class="card mb-3 shadow-sm">
             <img src="assets/images/Ideapad.jpg" id="images">
-            <div class="card-body">
-              <h5>Ideapad 120s-11.6" Intel.</h5>
+              <div class="card-body"><h5>Ideapad 120s-11.6" Intel.</h5>
               <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
               <p class="price">Our Price: Kshs. 29,999</p>       
               <div class="d-flex justify-content-between align-items-center">
@@ -69,187 +76,53 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-3">
-        <div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg">
-            <div class="card-body">
-              <h5>Smart HD screen.</h5>
-              <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
-              <p class="price">Our Price: Kshs. 29,999</p>       
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <button type="button" class="btn btn-sm btn-success">View Details</button>
-                  <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
-                </div>            
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-        <div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg">
-            <div class="card-body">
-              <h5>Flexible HP Keyboard.</h5>
-              <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
-              <p class="price">Our Price: Kshs. 29,999</p>       
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <button type="button" class="btn btn-sm btn-success">View Details</button>
-                  <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
-                </div>            
-              </div>
-            </div>
-          </div>
-        </div>
+        </div>'; ?>
+      </div><br></div>
 
-        <div class="col-md-3">
-        <div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg">
-            <div class="card-body">
-              <h5>Ideapad 120s-11.6" Intel.</h5>
+      
+      <div class="container-fluid" id="popular">
+      <h3>Popular Items</h3><h5 class="ml-auto align-right"><a href="#">SEE MORE >></a></h5><hr>
+      <div class="row">
+        <?php for($i=0; $i<4; $i++) 
+          echo '<div class="col-md-3"><div class="card mb-3 shadow-sm">
+            <img src="assets/images/Ideapad.jpg" id="images">
+              <div class="card-body"><h5>Ideapad 120s-11.6" Intel.</h5>
               <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
               <p class="price">Our Price: Kshs. 29,999</p>       
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-                  <button type="button" class="btn btn-sm btn-success">View Details</button>
+                  <button type="button" class="btn btn-sm btn-success" data-toggle="modal"  data-target="#item1">View Details</button>
                   <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
                 </div>            
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-3">
-        <div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg">
-            <div class="card-body">
-              <h5>Ideapad 120s-11.6" Intel.</h5>
-              <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
-              <p class="price">Our Price: Kshs. 29,999</p>       
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <button type="button" class="btn btn-sm btn-success">View Details</button>
-                  <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
-                </div>            
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-        <div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg">
-            <div class="card-body">
-              <h5>Ideapad 120s-11.6" Intel.</h5>
-              <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
-              <p class="price">Our Price: Kshs. 29,999</p>       
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <button type="button" class="btn btn-sm btn-success">View Details</button>
-                  <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
-                </div>            
-              </div>
-            </div>
-          </div>
-        </div>
+        </div>'; ?>
+      </div><br></div>
 
-        <div class="col-md-3">
-        <div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg">
-            <div class="card-body">
-              <h5>Ideapad 120s-11.6" Intel.</h5>
+      
+      <div class="container-fluid" id="flash">
+      <h3>Flash Sales</h3><h5 class="ml-auto align-right"><a href="#">SEE MORE >></a></h5><hr>
+      <div class="row" id="flash">
+        <?php for($i=0; $i<4; $i++) 
+          echo '<div class="col-md-3"><div class="card mb-3 shadow-sm">
+            <img src="assets/images/Ideapad.jpg" id="images">
+              <div class="card-body"><h5>Ideapad 120s-11.6" Intel.</h5>
               <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
               <p class="price">Our Price: Kshs. 29,999</p>       
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-                  <button type="button" class="btn btn-sm btn-success">View Details</button>
+                  <button type="button" class="btn btn-sm btn-success" data-toggle="modal"  data-target="#item1">View Details</button>
                   <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
                 </div>            
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-3">
-        <div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg">
-            <div class="card-body">
-              <h5>Ideapad 120s-11.6" Intel.</h5>
-              <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
-              <p class="price">Our Price: Kshs. 29,999</p>       
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <button type="button" class="btn btn-sm btn-success">View Details</button>
-                  <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
-                </div>            
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-        <div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg">
-            <div class="card-body">
-              <h5>Ideapad 120s-11.6" Intel.</h5>
-              <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
-              <p class="price">Our Price: Kshs. 29,999</p>       
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <button type="button" class="btn btn-sm btn-success">View Details</button>
-                  <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
-                </div>            
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-        <div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg">
-            <div class="card-body">
-              <h5>Ideapad 120s-11.6" Intel.</h5>
-              <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
-              <p class="price">Our Price: Kshs. 29,999</p>       
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <button type="button" class="btn btn-sm btn-success">View Details</button>
-                  <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
-                </div>            
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-        <div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg">
-            <div class="card-body">
-              <h5>Ideapad 120s-11.6" Intel.</h5>
-              <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
-              <p class="price">Our Price: Kshs. 29,999</p>       
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <button type="button" class="btn btn-sm btn-success">View Details</button>
-                  <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
-                </div>            
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-        <div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg">
-            <div class="card-body">
-              <h5>Ideapad 120s-11.6" Intel.</h5>
-              <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
-              <p class="price">Our Price: Kshs. 29,999</p>       
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <button type="button" class="btn btn-sm btn-success">View Details</button>
-                  <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
-                </div>            
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </div>'; ?>
+      </div><br></div>
+
     </div>
   </div>
+  <?php include 'assets/php/footer.php'?>
   </body>
   </html>
