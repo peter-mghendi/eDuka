@@ -1,5 +1,5 @@
-nav{
-    background-color: white;
+/* Light Navbar */
+/*nav{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.19);
 }
 
@@ -19,6 +19,30 @@ nav>div>ul>li.nav-item.active{
 nav>div>ul>li.nav-item:hover{
     border: 1px #212121 solid;
     transition-duration: 500ms;
+} */
+
+/* Dark Navbar */
+nav{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.19);
+}
+
+nav>div>ul>li.nav-item{
+    border: 1px #343a40 solid;
+    border-radius: 32px;
+    margin: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+    transition-duration: 500ms;
+}
+
+nav>div>ul>li.nav-item.active{
+    border: 1px white solid;
+    transition-duration: 500ms;
+}
+
+nav>div>ul>li.nav-item:hover{
+    border: 1px white solid;
+    transition-duration: 500ms;
 }
 
 .dropdown-menu{
@@ -27,8 +51,9 @@ nav>div>ul>li.nav-item:hover{
     border-bottom-right-radius: 24px;
 }
 
-.margin-top{
-    margin-top: 32px;
+.margin-vertical{
+    margin-top: 80px;
+    margin-bottom: 40px;
 }
 
 .secondary-nav{
@@ -61,3 +86,25 @@ nav>div>ul>li.nav-item:hover{
     color: darkgray;
     transition-duration: 500ms;
 }
+
+@media (max-width: 768px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+
+  @media (max-width: 1280px) {
+    .carousel-caption>h1,
+    .carousel-caption>h2,
+    .carousel-caption>h3,
+    .carousel-caption>h4,
+    .carousel-caption>h5,
+    .carousel-caption>h6,
+    .carousel-caption>p {
+      color: black;
+    }
+
+    .carousel-item>img{
+        width: 100%;
+    }
+  }

@@ -1,66 +1,59 @@
-<!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <title>e-sales|home</title>
-     <link rel="stylesheet" href="../css/bootstrap.min.css">
-     
-     <link rel="sylesheet" href="assets/css/style.css"> 
-     <link rel="sylesheet" href="assets/css/main.css">    
-     <link rel="stylesheet" href="../css/all.css">
-     <link rel="stylesheet" href="../css/fontawesome.min.css">
-     <script src="../js/jquery.min.js"></script>
-	   <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/webfont.js"></script>  
- </head>
- <body>
- 
-
+<?php $slides = 4; 
+$images = array("assets/images/smartHD.jpg", "assets/images/flexiblekyb.jpg", "assets/images/IdeapadLarge.jpg", "assets/images/flexiblekyb.jpg"); 
+$titles = array("HD Monitor", "Flexiboard", "Lappytop", "Flexiboard Again");
+$descriptions = array("View all your movies and games in ultra sharp Full HD quality", "Roll it up and take it with you wherever you go", "The ultimate students' laptop, built to cater to your every need", "I already discussed this one. Roll it up...");
+?>
 <main role="main">
 
-  <div class="container margin-top">
-    <div class="row">
-      <div class="col-sm3"></div>
-      <div class="col-sm6">
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="assets/images/smartHD.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="assets/images/flexiblekyb.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="assets/images/IdeapadLarge.jpg" class="d-block w-100" alt="...">
-            </div>
+<div class="container margin-vertical">
+<div id="myCarousel" class="carousel slide bg-dark" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <?php for ($i=0; $i<$slides; $i++){
+          $state = ($i==0)?"active":"";
+          echo "<li data-target='#myCarousel' data-slide-to='$i' class='$state'></li>";
+      } ?>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <?php for ($i=0; $i<$slides; $i++){
+          $state = ($i==0)?"active":"";
+          echo 
+          "<div class='carousel-item $state'>
+            <img src='$images[$i]' alt='Image'>
+            <div class='carousel-caption text-right'>
+                <h1>$titles[$i]</h1>
+                <p>$descriptions[$i]</p>
+                <h5 class='list-price text-danger'>Was: <s>Kshs. 32,000</s></h5> 
+                <h4>Now: Ksh. 29,000</h4>
+            </div>      
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-        <div class="col-sm3"></div>
-      </div>
+          ";}?>
     </div>
+
+    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+      </a>
+  </div>
   </div>
 
   <nav class="container secondary-nav">
     <ul class="nav justify-content-center">
       <li class="nav-item"><a href="#new" class="nav-link">New</a></li>
       <li class="nav-item"><a href="#popular" class="nav-link">Popluar</a></li>
+      <li class="nav-item"><a href="#month" class="nav-link"><?php echo date("F");?></a></li>
       <li class="nav-item"><a href="#flash" class="nav-link">Flash Sales</a></li>
     </ul>
   </nav>
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="container-fluid" id="new">
-      <h3>New Items</h3><h5 class="ml-auto align-right"><a href="#">SEE MORE >></a></h5><hr>
+      <div class="d-flex">
+          <h3>New Items</h3><h3 class="ml-auto"><small><a href="#">SEE MORE >></a></small></h3>
+        </div><hr>
       <div class="row">
         <?php for($i=0; $i<4; $i++) 
           echo '<div class="col-md-3"><div class="card mb-3 shadow-sm">
@@ -81,7 +74,9 @@
 
       
       <div class="container-fluid" id="popular">
-      <h3>Popular Items</h3><h5 class="ml-auto align-right"><a href="#">SEE MORE >></a></h5><hr>
+        <div class="d-flex">
+          <h3>Popular Items</h3><h3 class="ml-auto"><small><a href="#">SEE MORE >></a></small></h3>
+        </div><hr>
       <div class="row">
         <?php for($i=0; $i<4; $i++) 
           echo '<div class="col-md-3"><div class="card mb-3 shadow-sm">
@@ -100,9 +95,32 @@
         </div>'; ?>
       </div><br></div>
 
+      <div class="container-fluid" id="month">
+      <div class="d-flex">
+          <h3><?php echo date("F");?> Sales</h3><h3 class="ml-auto"><small><a href="#">SEE MORE >></a></small></h3>
+        </div><hr>
+      <div class="row" id="flash">
+        <?php for($i=0; $i<4; $i++) 
+          echo '<div class="col-md-3"><div class="card mb-3 shadow-sm">
+            <img src="assets/images/Ideapad.jpg" id="images">
+              <div class="card-body"><h5>Ideapad 120s-11.6" Intel.</h5>
+              <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
+              <p class="price">Our Price: Kshs. 29,999</p>       
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <button type="button" class="btn btn-sm btn-success" data-toggle="modal"  data-target="#item1">View Details</button>
+                  <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
+                </div>            
+              </div>
+            </div>
+          </div>
+        </div>'; ?>
+      </div><br></div>
       
       <div class="container-fluid" id="flash">
-      <h3>Flash Sales</h3><h5 class="ml-auto align-right"><a href="#">SEE MORE >></a></h5><hr>
+      <div class="d-flex">
+          <h3>Flash Sales</h3><h3 class="ml-auto"><small><a href="#">SEE MORE >></a></small></h3>
+        </div><hr>
       <div class="row" id="flash">
         <?php for($i=0; $i<4; $i++) 
           echo '<div class="col-md-3"><div class="card mb-3 shadow-sm">
@@ -123,6 +141,3 @@
 
     </div>
   </div>
-  <?php include 'assets/php/footer.php'?>
-  </body>
-  </html>

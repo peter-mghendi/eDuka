@@ -1,5 +1,5 @@
 <?php $page = basename($_SERVER['PHP_SELF'], '.php'); ?>
-<nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" id="nav" name="nav">
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top" id="nav" name="nav">
   	<a class="navbar-brand" href="index.php">eDuka</a>
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle Navigation">
         <span class="navbar-toggler-icon"></span>

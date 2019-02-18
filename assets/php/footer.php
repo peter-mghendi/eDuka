@@ -12,6 +12,6 @@
                Helooooooooo
             </div>
          </div>
-         <i class="fa fa-copyright" aria-hidden="true"></i> Copyright 2018-2019 e-duka
+         &copy; 2018-<?php echo date("Y");?> eDuka
       </div>
    </footer>    
