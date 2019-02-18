@@ -22,5 +22,11 @@ nav>div>ul>li.nav-item:hover{
 }
 
 .dropdown-menu{
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+.margin-top{
+    margin-top: 32px;
 }

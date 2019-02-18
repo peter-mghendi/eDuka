@@ -15,7 +15,11 @@
 <?php 
     include 'assets/php/_nav.php';
     include 'assets/php/_connect.php';
-    # Fetch from DB
+
+    $token = $_SESSION["token"];
+    $profile_query = "SELECT * FROM users WHERE token = '$token'";
+    $profile_res = mysqli_query($db, $profile_query);
+    $profile_row = mysqli_fetch_row ($profile_res);
 ?>
 
     <div class='container-fluid form-container'><div class='container-fluid form-content'><div class='form-material'>
@@ -26,15 +30,19 @@
         <tbody>
             <tr>
                 <td>Username</td>
-                <td></td>
+                <td><?php echo $profile_row[2] ?></td>
             </tr>
             <tr>
                 <td>Email</td>
-                <td></td>
+                <td><?php echo $profile_row[3] ?></td>
             </tr>
             <tr>
                 <td>Password digest</td>
-                <td></td>
+                <td><?php echo $profile_row[4] ?></td>
+            </tr>
+            <tr>
+                <td>Account status</td>
+                <td><?php echo $profile_row[5] ?></td>
             </tr>
         </tbody>
         </table>
