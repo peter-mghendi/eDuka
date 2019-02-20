@@ -52,7 +52,7 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
     <div class="container">
       <div class="container-fluid product-set" id="new">
       <div class="d-flex">
-          <h3>New Items</h3><h3 class="ml-auto"><small><a href="#?value=500">SEE MORE >></a></small></h3>
+          <h3>New Items</h3><h3 class="ml-auto"><small><a href="#">SEE MORE >></a></small></h3>
         </div><hr>
       <div class="row">
         <?php 
