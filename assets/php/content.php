@@ -1,4 +1,4 @@
-<?php $slides = 4; 
+<?php $slides = 4; $num=4;
 $images = array("assets/images/smartHD.jpg", "assets/images/flexiblekyb.jpg", "assets/images/IdeapadLarge.jpg", "assets/images/flexiblekyb.jpg"); 
 $titles = array("HD Monitor", "Flexiboard", "Lappytop", "Flexiboard Again");
 $descriptions = array("View all your movies and games in ultra sharp Full HD quality", "Roll it up and take it with you wherever you go", "The ultimate students' laptop, built to cater to your every need", "I already discussed this one. Roll it up...");
@@ -50,30 +50,33 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
   </nav>
   <div class="album py-5 bg-light">
     <div class="container">
-      <div class="container-fluid" id="new">
+      <div class="container-fluid product-set" id="new">
       <div class="d-flex">
-          <h3>New Items</h3><h3 class="ml-auto"><small><a href="#">SEE MORE >></a></small></h3>
+          <h3>New Items</h3><h3 class="ml-auto"><small><a href="#?value=500">SEE MORE >></a></small></h3>
         </div><hr>
       <div class="row">
-        <?php for($i=0; $i<4; $i++) 
-          echo '<div class="col-md-3"><div class="card mb-3 shadow-sm">
-            <img src="assets/images/Ideapad.jpg" id="images">
-              <div class="card-body"><h5>Ideapad 120s-11.6" Intel.</h5>
-              <p class="list-price text-danger">List Price: <s>Kshs. 32,000</s></p> 
-              <p class="price">Our Price: Kshs. 29,999</p>       
-              <div class="d-flex justify-content-between align-items-center">
+        <?php 
+        $new_query = "SELECT * FROM products WHERE saletype = 'new'";
+        $new_result = mysqli_query($db, $new_query) or die(mysqli_error($db));
+        while($new_row = mysqli_fetch_row($new_result))
+          echo "<div class='col-md-3'><div class='card mb-3 shadow-sm'>
+            <img src='assets/images/products/$new_row[1].jpg' id='images'>
+              <div class='card-body'><small><h5 style='text-transform: uppercase'>$new_row[2]</h5></small><h5>$new_row[3]</h5>
+              <p class='list-price text-danger'>List Price: <s>Kshs. $new_row[5]</s></p> 
+              <p class='price'>Our Price: Kshs. $new_row[6]</p>       
+              <div class='d-flex justify-content-between align-items-center'>
                 <div>
-                  <button type="button" class="btn btn-sm btn-success" data-toggle="modal"  data-target="#item1">View Details</button>
-                  <button type="button" class="btn btn-sm btn-warning">Add<i class="fa fa-cart-plus" aria-hidden="true"></i> </button>
+                  <button type='button' class='btn btn-sm btn-success product-btn' data-toggle='modal' data-target='#productModal' data-id='$new_row[1]'>View Details</button>
+                  <button type='button' class='btn btn-sm btn-warning'>Add<i class='fa fa-cart-plus' aria-hidden='true'></i> </button>
                 </div>            
               </div>
             </div>
           </div>
-        </div>'; ?>
-      </div><br></div>
+        </div>"; ?>
+      </div></div>
 
       
-      <div class="container-fluid" id="popular">
+      <div class="container-fluid product-set" id="popular">
         <div class="d-flex">
           <h3>Popular Items</h3><h3 class="ml-auto"><small><a href="#">SEE MORE >></a></small></h3>
         </div><hr>
@@ -93,9 +96,9 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
             </div>
           </div>
         </div>'; ?>
-      </div><br></div>
+      </div></div>
 
-      <div class="container-fluid" id="month">
+      <div class="container-fluid product-set" id="month">
       <div class="d-flex">
           <h3><?php echo date("F");?> Sales</h3><h3 class="ml-auto"><small><a href="#">SEE MORE >></a></small></h3>
         </div><hr>
@@ -115,9 +118,9 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
             </div>
           </div>
         </div>'; ?>
-      </div><br></div>
+      </div></div>
       
-      <div class="container-fluid" id="flash">
+      <div class="container-fluid product-set" id="flash">
       <div class="d-flex">
           <h3>Flash Sales</h3><h3 class="ml-auto"><small><a href="#">SEE MORE >></a></small></h3>
         </div><hr>
@@ -137,7 +140,7 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
             </div>
           </div>
         </div>'; ?>
-      </div><br></div>
+      </div></div>
 
     </div>
   </div>

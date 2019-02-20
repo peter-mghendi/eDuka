@@ -1,9 +1,9 @@
     <?php
+        $img_path = "assets/images/users/";
+        $new_user_img = $img_path."_user.png";
         if (isset($_POST['email'])){
             extract($_POST);
-            include '_connect.php';
             if (session_status() == PHP_SESSION_NONE) session_start();
-
             $len = 12; #Length of user tokens
         function getToken(int $length){
             $token = "";
@@ -23,6 +23,7 @@
             $tkn_res = mysqli_query($db, $tkn_query);
             $tkn_count = mysqli_num_rows($tkn_res);
         } while ($tkn_count > 0);
+        $passwords_match = $password == $confirmpassword;
         $password = md5($password);
         $status = "active";
 
@@ -30,24 +31,24 @@
         $eml_res = mysqli_query($db, $eml_query);
         $eml_count = mysqli_num_rows($eml_res);
 
-        if ($eml_count==0){
-            $reg_query = "INSERT INTO users VALUES (null, '$token', '$name', '$email', '$password', '$status')";
-            mysqli_query($db, $reg_query);
-            $_SESSION['token'] = $token;
-            $_SESSION['user'] = $name;
-            if (isset($_SESSION['login_error'])) session_unregister('login_error');
-            if (isset($_SESSION['signup_error'])) session_unregister('signup_error');
-            header("location:index.php");
-        } else {
-            $error = "<div class='container-fluid form-container'><div class='container-fluid form-content'><div class='form-material'>";
-            $error .= "<center><h4><b>Account already exists</b></h4></center>";
-            $error .= "<hr>";
-            $error .= "<center><p class='danger'>ERROR: The email address $email already has an account linked to it.</p></center>";
-            $error .= "<br>";
-            $error .= "<center><p>Click <a href='login.php'>here</a> to log in instead.</p></center>";
-            $error .= "</div></div></div>";
+        if ($eml_count==1){
+            $error = "<script> alert('Signup failed! The account $email already exists.');</script>";
             if (isset($_SESSION['login_error'])) $_SESSION['login_error'] = null;
             $_SESSION['signup_error'] = $error;
+        } else if (!$passwords_match){
+            $error = "<script> alert('Signup failed! The passwords do not match.');</script>";
+            if (isset($_SESSION['login_error'])) $_SESSION['login_error'] = null;
+            $_SESSION['signup_error'] = $error;
+        }else {
+            $reg_query = "INSERT INTO users VALUES (null, '$token', '$name', '$email', '$password', '$status')";
+            mysqli_query($db, $reg_query);
+            $user_img = $img_path.$token.".jpg";
+            copy($new_user_img, $user_img);
+            $_SESSION['token'] = $token;
+            $_SESSION['user'] = $name;
+            if (isset($_SESSION['login_error'])) $_SESSION['login_error'] = null;
+            if (isset($_SESSION['signup_error'])) $_SESSION['signup_error'] = null;
+            header("location: index.php");
         }
     }
 ?>

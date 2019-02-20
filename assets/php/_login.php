@@ -1,32 +1,26 @@
 <?php
-if (isset($_POST['email'])){
+if (isset($_POST['user'])){
 extract($_POST);
 if (session_status() == PHP_SESSION_NONE) session_start();
-include '_connect.php';
-$password = md5($password);
-$log_sql ="SELECT * FROM users WHERE email='$email' AND password='$password'";
+$pass = md5($pass);
+$log_sql ="SELECT * FROM users WHERE email='$user' AND password='$pass'";
 $log_result=mysqli_query($db, $log_sql) or die( mysqli_error($db) );
 $log_count= mysqli_num_rows ($log_result);
 
-if ($log_count==1){
-    $log_row=mysqli_fetch_row ($log_result);
-    $username = $log_row[2];
-    $token = $log_row[1];
-    $_SESSION['user'] = $username;
-    $_SESSION['token'] = $token;
-    if (isset($_SESSION['login_error'])) session_unregister('login_error');
-    if (isset($_SESSION['signup_error'])) session_unregister('signup_error');
-    header("location:index.php");
-}else{
-    $error = "<div class='container-fluid form-container'><div class='container-fluid form-content'><div class='form-material'>";
-    $error .=  "<center><h4><b>Incorrect login credentials</b></h4></center>";
-    $error .=  "<hr>";
-    $error .=  "<center><p class='danger'>ERROR: Either the login credentials entered for $username are incorrect or that account does not exist.</p></center>";
-    $error .=  "<br>";
-    $error .=  "<center><p>Click <a href='signup.php'>here</a> to sign up instead.</p></center>";
-    $error .=  "</div></div></div>";
+if ($log_count==0){
+    $error = "<script> alert('Login failed! Invalid login details entered for $user.');</script>";
     if (isset($_SESSION['signup_error'])) $_SESSION['signup_error'] = null;
     $_SESSION['login_error'] = $error;
+} else if (($log_row=(mysqli_fetch_row ($log_result)))[5]!="active"){
+    $error = "<script> alert('Login failed! This account has been $account_status.');</script>";
+    if (isset($_SESSION['signup_error'])) $_SESSION['signup_error'] = null;
+    $_SESSION['login_error'] = $error;
+} else {
+    $_SESSION['user'] = $log_row[2];
+    $_SESSION['token'] = $log_row[1];
+    if (isset($_SESSION['login_error'])) $_SESSION['login_error'] = null;
+    if (isset($_SESSION['signup_error'])) $_SESSION['signup_error'] = null;
+    header("location: index.php");
 }
 }
 ?>
