@@ -19,5 +19,5 @@
         <input type="password" class="form-control" name="confirmpassword" placeholder="Confirm your Password" minlength="8" maxlength="50" autocomplete="off" required>
     </div>
 
-    <button type="submit" class="btn btn-other btn-block" name="submit">Sign Up</button>
+    <div class="d-flex"><button type="submit" class="btn btn-other btn-block mx-auto" name="submit">Sign Up</button></div>
 </form>

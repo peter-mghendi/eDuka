@@ -9,5 +9,5 @@
         <input type="password" class="form-control" name="pass" id="pass" placeholder="Your Password" autocomplete="off" required>
     </div>
 
-    <button type="submit" class="btn btn-other btn-block" name="submit">Sign In</button>
+    <div class="d-flex"><button type="submit" class="btn btn-other btn-block mx-auto" name="submit">Sign In</button></div>
 </form>
