@@ -3,6 +3,7 @@
     if (session_status() == PHP_SESSION_NONE) session_start();
     if (isset($_SESSION['token'])){
         include 'assets/php/account/edit.php';
+        include 'assets/php/_add.php';
     } else {
         include 'assets/php/_login.php'; 
         include 'assets/php/_signup.php';

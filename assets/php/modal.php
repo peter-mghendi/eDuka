@@ -84,7 +84,7 @@
 
   <div class="modal fade" id="searchModal">
     <div class="modal-dialog search-dialog">
-      <div class="modal-content search-box bg-dark">
+      <div class="modal-content search-box">
         <div class="modal-body search-body">
           <form class="form form-inline form-group" role="form" method="post" action="<?php $_PHP_SELF ?>">
             <input type="search" class="form-control search-text-box" name="search_query" placeholder="I'm looking for..." required style="width:100%">

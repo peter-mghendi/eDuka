@@ -1,8 +1,7 @@
-<?php $slides = 4; $num=4;
-
-$images = array("assets/images/smartHD.jpg", "assets/images/flexiblekyb.jpg", "assets/images/IdeapadLarge.jpg", "assets/images/flexiblekyb.jpg"); 
-$titles = array("HD Monitor", "Flexiboard", "Lappytop", "Flexiboard Again");
-$descriptions = array("View all your movies and games in ultra sharp Full HD quality", "Roll it up and take it with you wherever you go", "The ultimate students' laptop, built to cater to your every need", "I already discussed this one. Roll it up...");
+<?php $slides = 4; $num=4; $user = $_SESSION['token'];
+#$images = array("assets/images/smartHD.jpg", "assets/images/flexiblekyb.jpg", "assets/images/IdeapadLarge.jpg", "assets/images/flexiblekyb.jpg"); 
+#$titles = array("HD Monitor", "Flexiboard", "Lappytop", "Flexiboard Again");
+#$descriptions = array("View all your movies and games in ultra sharp Full HD quality", "Roll it up and take it with you wherever you go", "The ultimate students' laptop, built to cater to your every need", "I already discussed this one. Roll it up...");
 ?>
 <main role="main">
 
@@ -64,27 +63,32 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
         <hr>
         <div class="row">
           <?php 
-        $i = 0;
-        $set_query = "SELECT * FROM products";
-        $set_result = mysqli_query($db, $set_query) or die(mysqli_error($db));
-        while(($set_row = mysqli_fetch_row($set_result)) && ($i<$num)){
-          $categories = explode(";", $set_row[7]);
-          if(!in_array("new", $categories)) continue;
-          echo "<div class='col-md-3'><div class='card md-3 shadow-sm'>
-            <img src='assets/images/products/$set_row[1].jpg' id='images'>
-              <div class='card-body'><small><h6 style='text-transform: uppercase'>$set_row[2]</h6></small><h5>$set_row[3]</h5>
-              <p class='list-price text-danger'>List Price: <s>Kshs. $set_row[5]</s></p><p class='price'>Our Price: Kshs. $set_row[6]</p>       
-              <div class='d-flex justify-content-between align-items-center'><div class='mx-auto'>
-                  <button type='button' class='btn btn-sm btn-success product-btn' data-toggle='modal' data-target='#productModal_$set_row[1]' data-id='$set_row[1]'>View Details</button>
-                  <button type='button' class='btn btn-sm btn-warning'><i class='fa fa-cart-plus' aria-hidden='true'></i> Add</button>
-                  <button type='button' class='btn btn-sm btn-link'><i class='far fa-star' aria-hidden='true'></i></button>
-              </div></div>
-            </div>
-          </div>
-          </div>";
-          include 'assets/php/details.php';
-          $i++;
-        } ?>
+            $i = 0;
+            $set_query = "SELECT * FROM products";
+            $set_result = mysqli_query($db, $set_query) or die(mysqli_error($db));
+            while(($set_row = mysqli_fetch_row($set_result)) && ($i<$num)){
+              $categories = explode(";", $set_row[7]);
+              $product = $set_row[1];
+              $wished_query = "SELECT * FROM wishlist WHERE user = '$user' AND product = '$product'";
+              $wished_result = mysqli_query($db, $wished_query) or die(mysqli_error());
+              $wished_count = mysqli_num_rows($wished_result);
+              $wished = ($wished_count == 1)?"fa":"far";
+              if(!in_array("new", $categories)) continue;
+              echo "<div class='col-md-3'><div class='card md-3 shadow-sm'>
+                <img src='assets/images/products/$set_row[1].jpg' id='images'>
+                  <div class='card-body'><small><h6 style='text-transform: uppercase'>$set_row[2]</h6></small><h5>$set_row[3]</h5>
+                  <p class='list-price text-danger'>List Price: <s>Kshs. $set_row[5]</s></p><p class='price'>Our Price: Kshs. $set_row[6]</p>       
+                  <div class='d-flex justify-content-between align-items-center'><div class='mx-auto'>
+                      <button type='button' class='btn btn-sm btn-success product-btn' data-toggle='modal' data-target='#productModal_$set_row[1]' data-id='$set_row[1]'>View Details</button>
+                      <a href='#' class='btn btn-sm btn-warning'><i class='fa fa-cart-plus' aria-hidden='true'></i> Add</a>
+                      <a href='index.php?&list=wishlist&user=$user&product=$product' class='btn btn-sm btn-link'><i class='$wished fa-star' aria-hidden='true'></i></a>
+                  </div></div>
+                </div>
+              </div>
+              </div>";
+              include 'assets/php/details.php';
+              $i++;
+            } ?>
         </div>
       </div>
 
@@ -102,6 +106,11 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
         $set_result = mysqli_query($db, $set_query) or die(mysqli_error($db));
         while(($set_row = mysqli_fetch_row($set_result)) && ($i<$num)){
           $categories = explode(";", $set_row[7]);
+          $product = $set_row[1];
+          $wished_query = "SELECT * FROM wishlist WHERE user = '$user' AND product = '$product'";
+          $wished_result = mysqli_query($db, $wished_query) or die(mysqli_error());
+          $wished_count = mysqli_num_rows($wished_result);
+          $wished = ($wished_count == 1)?"fa":"far";
           if(!in_array("popular", $categories)) continue;
           echo "<div class='col-md-3'><div class='card md-3 shadow-sm'>
             <img src='assets/images/products/$set_row[1].jpg' id='images'>
@@ -109,8 +118,8 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
               <p class='list-price text-danger'>List Price: <s>Kshs. $set_row[5]</s></p><p class='price'>Our Price: Kshs. $set_row[6]</p>       
               <div class='d-flex justify-content-between align-items-center'><div class='mx-auto'>
                   <button type='button' class='btn btn-sm btn-success product-btn' data-toggle='modal' data-target='#productModal_$set_row[1]' data-id='$set_row[1]'>View Details</button>
-                  <button type='button' class='btn btn-sm btn-warning'><i class='fa fa-cart-plus' aria-hidden='true'></i> Add</button>
-                  <button type='button' class='btn btn-sm btn-link'><i class='far fa-star' aria-hidden='true'></i></button>
+                  <a href='#' class='btn btn-sm btn-warning'><i class='fa fa-cart-plus' aria-hidden='true'></i> Add</a>
+                  <a href='index.php?&list=wishlist&user=$user&product=$product' class='btn btn-sm btn-link'><i class='$wished fa-star' aria-hidden='true'></i></a>
               </div></div>
             </div>
           </div>
@@ -135,6 +144,11 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
         $set_result = mysqli_query($db, $set_query) or die(mysqli_error($db));
         while(($set_row = mysqli_fetch_row($set_result)) && ($i<$num)){
           $categories = explode(";", $set_row[7]);
+          $product = $set_row[1];
+          $wished_query = "SELECT * FROM wishlist WHERE user = '$user' AND product = '$product'";
+          $wished_result = mysqli_query($db, $wished_query) or die(mysqli_error());
+          $wished_count = mysqli_num_rows($wished_result);
+          $wished = ($wished_count == 1)?"fa":"far";
           if(!in_array("monthly", $categories)) continue;
           echo "<div class='col-md-3'><div class='card md-3 shadow-sm'>
             <img src='assets/images/products/$set_row[1].jpg' id='images'>
@@ -142,8 +156,8 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
               <p class='list-price text-danger'>List Price: <s>Kshs. $set_row[5]</s></p><p class='price'>Our Price: Kshs. $set_row[6]</p>       
               <div class='d-flex justify-content-between align-items-center'><div class='mx-auto'>
                   <button type='button' class='btn btn-sm btn-success product-btn' data-toggle='modal' data-target='#productModal_$set_row[1]' data-id='$set_row[1]'>View Details</button>
-                  <button type='button' class='btn btn-sm btn-warning'><i class='fa fa-cart-plus' aria-hidden='true'></i> Add</button>
-                  <button type='button' class='btn btn-sm btn-link'><i class='far fa-star' aria-hidden='true'></i></button>
+                  <a href='#' class='btn btn-sm btn-warning'><i class='fa fa-cart-plus' aria-hidden='true'></i> Add</a>
+                  <a href='index.php?&list=wishlist&user=$user&product=$product' class='btn btn-sm btn-link'><i class='$wished fa-star' aria-hidden='true'></i></a>
               </div></div>
             </div>
           </div>
@@ -167,6 +181,11 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
         $set_result = mysqli_query($db, $set_query) or die(mysqli_error($db));
         while(($set_row = mysqli_fetch_row($set_result)) && ($i<$num)){
           $categories = explode(";", $set_row[7]);
+          $product = $set_row[1];
+          $wished_query = "SELECT * FROM wishlist WHERE user = '$user' AND product = '$product'";
+          $wished_result = mysqli_query($db, $wished_query) or die(mysqli_error());
+          $wished_count = mysqli_num_rows($wished_result);
+          $wished = ($wished_count == 1)?"fa":"far";
           if(!in_array("flash", $categories)) continue;
           echo "<div class='col-md-3'><div class='card md-3 shadow-sm'>
             <img src='assets/images/products/$set_row[1].jpg' id='images'>
@@ -174,8 +193,8 @@ $descriptions = array("View all your movies and games in ultra sharp Full HD qua
               <p class='list-price text-danger'>List Price: <s>Kshs. $set_row[5]</s></p><p class='price'>Our Price: Kshs. $set_row[6]</p>       
               <div class='d-flex justify-content-between align-items-center'><div class='mx-auto'>
                   <button type='button' class='btn btn-sm btn-success product-btn' data-toggle='modal' data-target='#productModal_$set_row[1]' data-id='$set_row[1]'>View Details</button>
-                  <button type='button' class='btn btn-sm btn-warning'><i class='fa fa-cart-plus' aria-hidden='true'></i> Add</button>
-                  <button type='button' class='btn btn-sm btn-link'><i class='far fa-star' aria-hidden='true'></i></button>
+                  <a href='#' class='btn btn-sm btn-warning'><i class='fa fa-cart-plus' aria-hidden='true'></i> Add</a>
+                  <a href='index.php?&list=wishlist&user=$user&product=$product' class='btn btn-sm btn-link'><i class='$wished fa-star' aria-hidden='true'></i></a>
               </div></div>
             </div>
           </div>
