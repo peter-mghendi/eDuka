@@ -73,6 +73,7 @@
               $wished_result = mysqli_query($db, $wished_query) or die(mysqli_error());
               $wished_count = mysqli_num_rows($wished_result);
               $wished = ($wished_count == 1)?"fa":"far";
+              $wished_status = ($wished_count == 1)?"Added":"Add";
               if(!in_array("new", $categories)) continue;
               echo "<div class='col-md-3'><div class='card md-3 shadow-sm'>
                 <img src='assets/images/products/$set_row[1].jpg' id='images'>
