@@ -26,4 +26,3 @@ echo
     </div>
   </div>
 </div>";
-?>  
