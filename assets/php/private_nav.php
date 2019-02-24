@@ -10,7 +10,7 @@
           <div class="dropdown-menu" id="dropdown-menu">
             <a class="nav-item dropdown-item <?php echo ($page=="profile")?"active":"" ?>" data-toggle='modal' data-target='#profileModal'><span class="fa fa-user-circle"></span> Profile</a>
             <a class="nav-item dropdown-item  <?php echo ($page=="wishlist")?"active":"" ?>" href="wishlist.php"><span class="fa fa-tasks"></span> Wishlist</a>
-            <a class="nav-item dropdown-item  <?php echo ($page=="cart")?"active":"" ?>" href="cart.php"><span class="fa fa-shopping-cart"></span> Cart <span class="badge badge-pill badge-secondary">3</span></a>
+            <a class="nav-item dropdown-item  <?php echo ($page=="cart")?"active":"" ?>" href="cart.php"><span class="fa fa-shopping-cart"></span> Cart <span class="badge badge-pill badge-secondary">4</span></a>
           </div>
       </li>
       <li class="nav-item">
