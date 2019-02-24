@@ -41,7 +41,7 @@
   <div class="album py-5 bg-light">
     <div class="container">
     <?php foreach ($productSets as $productSet){
-      echo "<div class='container-fluid product-set' id='new'><div class='d-flex'><h3>$productSet Items</h3><h3 class='ml-auto'><small><a href='#'>SEE MORE >></a></small></h3></div><hr><div class='row'>";
+      echo "<div class='container-fluid product-set' id='new'><div class='d-flex'><h3 class='set-title'>$productSet items</h3><h3 class='ml-auto'><small><a href='#'>SEE MORE >></a></small></h3></div><hr><div class='row'>";
       $i = 0;
       $set_query = "SELECT * FROM products";
       $set_result = mysqli_query($db, $set_query) or die(mysqli_error($db));
