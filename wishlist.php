@@ -33,7 +33,7 @@
                     <td>$product_row[2] $product_row[3]</td>
                     <td>Ksh. $product_row[6]</td>
                     <td class='set-title'>$product_row[9]</td>
-                    <td class = 'd-flex'><div class='mx-auto'><a href='assets/php/_add.php?&list=wishlist&user=$user&product=$product_row[1]'><span class='fa fa-trash'></span> </a>
+                    <td class = 'd-flex'><div class='mx-auto'><a href='index.php?&list=wishlist&user=$user&product=$product_row[1]'><span class='fa fa-trash'></span> </a>
                     <a href='#'> <span class='fa fa-cart-plus'></span></a></div></td>
                 </tr>";}} else echo "<h4>Nothing to show</h4>";?>
         </tbody>
