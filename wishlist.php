@@ -14,7 +14,7 @@
 </head>
 <body>
 <?php 
-   # include 'assets/php/_nav.php';  
+    include 'assets/php/_nav.php';  
     include 'assets/php/modal.php';
     $user = $_SESSION['token'];
     $wished_query = "SELECT * FROM wishlist WHERE user = '$user'";
