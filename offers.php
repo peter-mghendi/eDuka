@@ -1,3 +1,14 @@
+<?php 
+    include 'assets/php/_connect.php';
+    if (session_status() == PHP_SESSION_NONE) session_start();
+    if (isset($_SESSION['token'])){
+        include 'assets/php/account/edit.php';
+        include 'assets/php/_add.php';
+    } else {
+        include 'assets/php/_login.php'; 
+        include 'assets/php/_signup.php';
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +21,6 @@
 <body>
 <?php 
     include 'assets/php/_nav.php';
-    include 'assets/php/_connect.php';
 ?>
     
 <script src="../js/jquery-3.3.1.min.js"></script>
