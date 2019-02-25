@@ -1,5 +1,4 @@
 <?php
-    include '_connect.php';
     if(isset($_GET['list'])){
         extract($_GET);
         if ($list=="wishlist"){
@@ -11,17 +10,12 @@
             mysqli_query($db, $wish_query);
             header("location: index.php");
         } elseif ($list=="cart") {
-            if($action == "a"){
-                $cart_query = "SELECT * FROM cart";
-                $cart_result = mysqli_query($db, $cart_query);
-                $cart_count = mysqli_num_rows($cart_result);
-                if ($cart_count == 0){
-                    # ADD
-                } else {
-                    # Update quantity
-                }
-            } elseif ($action == "r") {
-                # Delete
-            }
+            $carted_query = "SELECT * FROM cart";
+            $carted_result = mysqli_query($db, $cart_query);
+            $carted_count = mysqli_num_rows($cart_result);
+            if ($carted_count == 0) $cart_query = "INSERT INTO cart VALUES(NULL, '$user', '$product', 1)";
+            else $cart_query = "DELETE FROM cart WHERE user = '$user' AND product = '$product'";
+            mysqli_query($db, $cart_query);
+            header("location: index.php");
         }
-    
+    }

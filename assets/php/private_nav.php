@@ -1,4 +1,4 @@
-<?php $page = basename($_SERVER['PHP_SELF'], '.php'); ?>
+<?php $page = basename($_SERVER['PHP_SELF'], '.php'); $user = $_SESSION['user']; $token = $_SESSION['token']?>
 <div class="primary-nav fixed-top">
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark" id="nav" name="nav">
     <?php include 'assets/php/nav_start.php'; ?>
@@ -6,11 +6,12 @@
       <li class="nav-item"><a class="nav-link"  data-toggle='modal' data-target='#searchModal'><span class="fa fa-search"></span> Search</a></li>  
       <li class="nav-item dropdown <?php echo ($page=="profile")||($page=="wishlist")||($page=="cart")?"active":"" ?>">
           <a class="nav-link dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" data-target="#dropdown-menu" href="javascript:void(0)">
-          <span class="fa fa-user-cog"></span> <?php echo $_SESSION['user'] ?> </a>
+          <span class="fa fa-user-cog"></span> <?php echo $user ?> </a>
           <div class="dropdown-menu" id="dropdown-menu">
+            <?php $cart_query = "SELECT * FROM cart WHERE user = '$token'"; $cart_result = mysqli_query($db, $cart_query) or die(mysqli_error()); $cart_count = mysqli_num_rows($cart_result)?>
             <a class="nav-item dropdown-item <?php echo ($page=="profile")?"active":"" ?>" data-toggle='modal' data-target='#profileModal'><span class="fa fa-user-circle"></span> Profile</a>
             <a class="nav-item dropdown-item  <?php echo ($page=="wishlist")?"active":"" ?>" href="wishlist.php"><span class="fa fa-tasks"></span> Wishlist</a>
-            <a class="nav-item dropdown-item  <?php echo ($page=="cart")?"active":"" ?>" href="cart.php"><span class="fa fa-shopping-cart"></span> Cart <span class="badge badge-pill badge-secondary">4</span></a>
+            <a class="nav-item dropdown-item  <?php echo ($page=="cart")?"active":"" ?>" href="cart.php"><span class="fa fa-shopping-cart"></span> Cart <span class="badge badge-pill badge-secondary"><?php echo $cart_count;?></span></a>
           </div>
       </li>
       <li class="nav-item">

@@ -20,8 +20,9 @@
     $wished_query = "SELECT * FROM wishlist WHERE user = '$user'";
     $wished_result = mysqli_query($db, $wished_query) or die(mysqli_error());
 ?>
-    <table class="table table-borderless table-responsive" style="margin: 80px;">
-        <!-- <thead><h5>My Wishlist</h5></thead> -->
+<div class="container d-flex table-responsive">
+<table class="table table-sm table-borderless table-hover mx-auto" style="margin-top: 80px;">
+        <thead><th><h5>My Wishlist</h5></th></thead>
         <tbody>
         <?php if (mysqli_num_rows($wished_result) > 0) {
             while($wished_row = mysqli_fetch_row($wished_result)){
@@ -29,17 +30,17 @@
                 $product_result = mysqli_query($db, $product_query);
                 $product_row = mysqli_fetch_row($product_result);
                 echo "<tr>
-                    <td><img src='assets/images/products/$product_row[1].jpg' alt='$product_row[2]' style='width: 50%;'></td>
-                    <td>$product_row[2] $product_row[3]</td>
-                    <td>Ksh. $product_row[6]</td>
-                    <td class='set-title'>$product_row[9]</td>
-                    <td class = 'd-flex'><div class='mx-auto'><a href='index.php?&list=wishlist&user=$user&product=$product_row[1]'><span class='fa fa-trash'></span> </a>
-                    <a href='#'> <span class='fa fa-cart-plus'></span></a></div></td>
-                </tr>";}} else echo "<h4>Nothing to show</h4>";?>
+                    <td><img src='assets/images/products/$product_row[1].jpg' alt='$product_row[2]' style='width: 32%;'></td>
+                    <td class='align-middle'>$product_row[2] $product_row[3]</td>
+                    <td class='align-middle'>Ksh. $product_row[6]</td>
+                    <td class='align-middle set-title'>$product_row[9]</td>
+                    <td class='align-middle'><div class='mx-auto'><a href='index.php?&list=wishlist&user=$user&product=$product_row[1]' style='padding: 4px'><span class='fa fa-trash'></span></a>
+                    <a href='index.php?&list=cart&user=$user&product=$product_row[1]'><span class='fa fa-cart-plus' style='padding: 4px'></span></a></div></td>
+                </tr>";}}  else echo "<tr><td><caption>Nothing to display</caption></td></tr>";?>
         </tbody>
     </table>
-    <?php 
-    include 'assets/php/footer.php'; ?>
+</div>
+<?php include 'assets/php/footer.php'; ?>
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 </body>

@@ -12,7 +12,7 @@
       </div>
       <div class='modal-footer d-flex'><div class='mx-auto'>".
         "<button class='btn btn-primary'><span class='fa fa-share-alt'></span> Share</button>
-        <a href='index.php?&list=wishlist&user=$user&product=$product'  class='btn btn-success'><span class='$wished fa-star'></span> $wished_status</a>
-        <button class='btn btn-warning'><span class='fa fa-cart-plus'></span> Add to cart</button>
+        <a href='index.php?&list=wishlist&user=$user&product=$product' class='btn btn-success'><span class='$wished fa-star'></span> $wished_status</a>
+        <a href='index.php?&list=cart&user=$user&product=$product' class='btn btn-warning'><span class='fa fa-cart-plus'></span> Add to cart</a>
         <button class='btn btn-danger' data-dismiss='modal'><span class='fa fa-times'></span> Cancel</button>
       </div></div></div></div></div>";

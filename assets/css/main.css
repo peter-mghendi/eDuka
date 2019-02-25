@@ -17,6 +17,9 @@ nav>div>ul>li.nav-item:hover{
     margin-bottom: 16px;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;}
+.dropdown-menu>.dropdown-item:last-child{
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;}
 .margin-vertical{
     margin-top: 80px;
     margin-bottom: 40px;}
@@ -59,7 +62,7 @@ nav>div>ul>li.nav-item:hover{
 ul.list-group{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 1em;
     grid-auto-flow: column;
     height: auto;
