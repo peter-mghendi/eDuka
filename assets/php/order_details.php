@@ -1,7 +1,3 @@
-<?php #include 'assets/php/_protect.php';
-    #$token = $_SESSION["token"];
-?>
-
 <div class='modal fade' id='orderModal_<?php echo $ordered_row[1];?>'>
     <div class='modal-dialog'>
         <div class='modal-content'>
@@ -42,6 +38,11 @@
                     <div class='tab-pane container fade' id='specifics_<?php echo $ordered_row[1];?>'>
                         <table class='table table-borderless'>
                             <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <?php 
@@ -49,11 +50,12 @@
                                     $quantityList = explode(";", $ordered_row[4]);
                                     foreach($productList as $p){
                                         $q = $quantityList[array_search($p, $productList)];
-                                        echo "Product: $p, Quantity: $q";
-                                    }?>
-                                <td>img</td>
-                                <td></td>
-                                <td></td>
+                                        $product_sql = "SELECT * FROM products WHERE token = '$p'";
+                                        $product_res = mysqli_query($db, $product_sql);
+                                        $product_row = mysqli_fetch_row($product_res);
+                                        echo "<tr><td class='align-middle'><img src='assets/images/products/$product_row[1].jpg' alt='' style='width:20%'></td>
+                                        <td class='set-title align-middle'>$product_row[2] $product_row[3]</td><td class='align-middle'>$q</td></tr>";
+                                        }?>  
                             </tbody>
                         </table>
                     </div>
