@@ -30,14 +30,19 @@
                 $product_query = "SELECT * FROM products WHERE token = '$carted_row[2]'";
                 $product_result = mysqli_query($db, $product_query) or die(mysqli_error($db));
                 $product_row = mysqli_fetch_row($product_result);
+                
+                $wished_query = "SELECT * FROM wishlist WHERE user = '$user' AND product = '$carted_row[2]'";
+                $wished_result = mysqli_query($db, $wished_query) or die(mysqli_error());
+                $wished_count = mysqli_num_rows($wished_result);
+                $wished = ($wished_count == 1)?"fa":"far";
                 echo "<tr>
                     <td><img src='assets/images/products/$product_row[1].jpg' alt='$product_row[2]' style='width: 32%;'></td>
                     <td class='align-middle'>$product_row[2] $product_row[3]</td>
                     <td class='align-middle'>Ksh. $product_row[6]</td>
                     <td class='align-middle set-title'>$product_row[9]</td>
-                    <td class='align-middle set-title'><a href='index.php?&list=cart&user=$user&product=$product_row[1]&action=dec'><span class='fa fa-minus' style='padding: 8px'></span></a><span style='padding: 8px'>$carted_row[3]</span><a href='index.php?&list=cart&user=$user&product=$product_row[1]&action=inc'><span class='fa fa-plus' style='padding: 8px'></span></a></td>
-                    <td class='align-middle'><div class='mx-auto'><a href='index.php?&list=wishlist&user=$user&product=$product_row[1]' style='padding: 4px'><span class='fa fa-star'></span></a>
-                    <a href='index.php?&list=cart&user=$user&product=$product_row[1]'><span class='fa fa-trash' style='padding: 4px'></span></a></div></td>
+                    <td class='align-middle set-title'><a href='cart.php?&list=cart&user=$user&product=$product_row[1]&action=dec'><span class='fa fa-minus' style='padding: 8px'></span></a><span style='padding: 8px'>$carted_row[3]</span><a href='cart.php?&list=cart&user=$user&product=$product_row[1]&action=inc'><span class='fa fa-plus' style='padding: 8px'></span></a></td>
+                    <td class='align-middle'><div class='mx-auto'><a href='cart.php?&list=wishlist&user=$user&product=$product_row[1]' style='padding: 4px'><span class='$wished fa-star'></span></a>
+                    <a href='cart.php?&list=cart&user=$user&product=$product_row[1]'><span class='fa fa-trash' style='padding: 4px'></span></a></div></td>
                 </tr>";}}  else echo "<tr><td><caption>Nothing to display</caption></td></tr>";?>
         </tbody>
     </table>
