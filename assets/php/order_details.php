@@ -21,15 +21,15 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Order ID</td>
+                                    <td><strong>Order ID</strong></td>
                                     <td><?php echo $ordered_row[1] ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Item Quantity</td>
+                                    <td><strong>Item Quantity</strong></td>
                                     <td><?php echo $item_quantity ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Status</td>
+                                    <td><strong>Status</strong></td>
                                     <td class="set-title"><?php echo $ordered_row[5] ?></td>
                                 </tr>
                             </tbody>

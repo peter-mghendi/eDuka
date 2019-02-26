@@ -18,6 +18,7 @@
     $user = $_SESSION['token'];
     $ordered_query = "SELECT * FROM orders WHERE user = '$user'";
     $ordered_result = mysqli_query($db, $ordered_query) or die(mysqli_error());
+    $ordered_count = mysqli_num_rows($ordered_result);
 ?>
     <div class="container d-flex table-responsive">
         <table class="table table-sm table-borderless table-hover mx-auto" style="margin-top: 80px;">
@@ -32,8 +33,13 @@
             </thead>
             <tbody>
                 <?php if (mysqli_num_rows($ordered_result) > 0) {
-            while($ordered_row = mysqli_fetch_row($ordered_result)){
-                $item_quantity = 15;
+                while($ordered_row = mysqli_fetch_row($ordered_result)){
+                $item_quantity_array = explode(";", $ordered_row[4]);
+                $i=0; $item_quantity = 0;
+                foreach ($item_quantity_array as $iq){
+                    $item_quantity = $item_quantity + intval($item_quantity_array[$i]);
+                    if ($i < $ordered_count) $i++;
+                }
                 echo "<tr>
                     <td class='align-middle'>$ordered_row[0]</td>
                     <td class='align-middle'>$ordered_row[1]</td>
