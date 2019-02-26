@@ -14,13 +14,10 @@ nav>div>ul>li.nav-item:hover{
     border: 1px white solid;
     transition-duration: 500ms;}
 .dropdown-menu{
+    padding-bottom: 16px;
     margin-bottom: 16px;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;}
-.dropdown-menu>.dropdown-item:last-child{
-    border-bottom-left-radius: 24px;
-    border-bottom-right-radius: 24px;
-    margin-bottom: 0;}
 .margin-vertical{
     margin-top: 80px;
     margin-bottom: 40px;}
@@ -191,4 +188,8 @@ section .section-title {
     padding-bottom: 0px;
     margin-bottom: 10px;
 }
+}
+.jumbotron{
+    margin-top: 80px;
+    margin-bottom: -40px;
 }
