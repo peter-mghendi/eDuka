@@ -39,10 +39,13 @@
                     <td class='align-middle'>$ordered_row[1]</td>
                     <td class='align-middle'>$item_quantity</td>
                     <td class='align-middle set-title'><span>$ordered_row[5]</span></td>
-                    <td class='align-middle'><button class='btn btn-primary'>Details</button></td>
-                </tr>";}}  else echo "<tr><td><caption>Nothing to display</caption></td></tr>";?>
+                    <td class='align-middle'><button class='btn btn-primary' data-toggle='modal' data-target='#orderModal_$ordered_row[1]'>Details</button></td>
+                </tr><tr><td>";
+                include 'assets/php/order_details.php'; echo "</td></tr>";
+                }}  else echo "<tr><td><caption>Nothing to display</caption></td></tr>";?>
             </tbody>
         </table>
+        <?php ?>
     </div>
     <?php include 'assets/php/footer.php'; ?>
     <script src="../js/jquery-3.3.1.min.js"></script>
