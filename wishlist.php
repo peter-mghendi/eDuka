@@ -43,6 +43,8 @@
 <?php include 'assets/php/footer.php'; ?>
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/webfont.js"></script>
+<script src="assets/js/main.js"></script>
 <?php include 'assets/php/_error.php'; ?>
 </body>
 </html>
