@@ -2,7 +2,8 @@
     include 'assets/php/_protect.php';
     include 'assets/php/_connect.php';
     include 'assets/php/account/edit.php';
-    include 'assets/php/_add.php';?>
+    include 'assets/php/_add.php';
+    include 'assets/php/_order.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,7 @@
 ?>
 <div class="container d-flex table-responsive">
 <table class="table table-sm table-borderless table-hover mx-auto" style="margin-top: 80px;">
-        <thead><th class="d-flex"><h5>My Cart</h5><button class="btn btn-primary ml-auto">Order Now</button></th></thead>
+        <thead><th class="d-flex"><h5>My Cart</h5><a href="cart.php?order=true" class="btn btn-primary ml-auto">Order Now</a></th></thead>
         <tbody>
         <tbody>
         <?php if (mysqli_num_rows($carted_result) > 0) {
@@ -30,7 +31,6 @@
                 $product_query = "SELECT * FROM products WHERE token = '$carted_row[2]'";
                 $product_result = mysqli_query($db, $product_query) or die(mysqli_error($db));
                 $product_row = mysqli_fetch_row($product_result);
-                
                 $wished_query = "SELECT * FROM wishlist WHERE user = '$user' AND product = '$carted_row[2]'";
                 $wished_result = mysqli_query($db, $wished_query) or die(mysqli_error());
                 $wished_count = mysqli_num_rows($wished_result);
@@ -50,5 +50,6 @@
 <?php include 'assets/php/footer.php'; ?>  
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<?php include 'assets/php/_error.php'; ?>
 </body>
 </html>

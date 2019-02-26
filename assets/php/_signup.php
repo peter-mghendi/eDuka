@@ -5,17 +5,17 @@
             extract($_POST);
             if (session_status() == PHP_SESSION_NONE) session_start();
             $len = 12; #Length of user tokens
-        function getToken(int $length){
-            $token = "";
-            $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYX";
-            $codeAlphabet .= "abcdefghijklmnopqrstuvwxyz";
-            $codeAlphabet .= "0123456789";
-            $max = strlen($codeAlphabet);
-            for ($i=0; $i<$length; $i++){
-                $token .= $codeAlphabet[random_int(0, $max-1)];
+            function getToken(int $length){
+                $token = "";
+                $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYX";
+                $codeAlphabet .= "abcdefghijklmnopqrstuvwxyz";
+                $codeAlphabet .= "0123456789";
+                $max = strlen($codeAlphabet);
+                for ($i=0; $i<$length; $i++){
+                    $token .= $codeAlphabet[random_int(0, $max-1)];
+                }
+                return $token;
             }
-            return $token;
-        }
 
         do{
             $token = getToken($len);

@@ -19,7 +19,8 @@ nav>div>ul>li.nav-item:hover{
     border-bottom-right-radius: 24px;}
 .dropdown-menu>.dropdown-item:last-child{
     border-bottom-left-radius: 24px;
-    border-bottom-right-radius: 24px;}
+    border-bottom-right-radius: 24px;
+    margin-bottom: 0;}
 .margin-vertical{
     margin-top: 80px;
     margin-bottom: 40px;}

@@ -34,8 +34,8 @@
                     <td class='align-middle'>$product_row[2] $product_row[3]</td>
                     <td class='align-middle'>Ksh. $product_row[6]</td>
                     <td class='align-middle set-title'>$product_row[9]</td>
-                    <td class='align-middle'><div class='mx-auto'><a href='index.php?&list=wishlist&user=$user&product=$product_row[1]' style='padding: 4px'><span class='fa fa-trash'></span></a>
-                    <a href='index.php?&list=cart&user=$user&product=$product_row[1]'><span class='fa fa-cart-plus' style='padding: 4px'></span></a></div></td>
+                    <td class='align-middle'><div class='mx-auto'><a href='wishlist.php?&list=wishlist&user=$user&product=$product_row[1]' style='padding: 4px'><span class='fa fa-trash'></span></a>
+                    <a href='wishlist.php?&list=cart&user=$user&product=$product_row[1]'><span class='fa fa-cart-plus' style='padding: 4px'></span></a></div></td>
                 </tr>";}}  else echo "<tr><td><caption>Nothing to display</caption></td></tr>";?>
         </tbody>
     </table>
@@ -43,5 +43,6 @@
 <?php include 'assets/php/footer.php'; ?>
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<?php include 'assets/php/_error.php'; ?>
 </body>
 </html>

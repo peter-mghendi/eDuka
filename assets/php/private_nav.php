@@ -4,7 +4,7 @@
     <?php include 'assets/php/nav_start.php'; ?>
     <ul class="nav navbar-nav ml-auto navbar-right">
       <li class="nav-item"><a class="nav-link"  data-toggle='modal' data-target='#searchModal'><span class="fa fa-search"></span> Search</a></li>  
-      <li class="nav-item dropdown <?php echo ($page=="profile")||($page=="wishlist")||($page=="cart")?"active":"" ?>">
+      <li class="nav-item dropdown <?php echo ($page=="profile")||($page=="wishlist")||($page=="cart")||($page=="orders")?"active":"" ?>">
           <a class="nav-link dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" data-target="#dropdown-menu" href="javascript:void(0)">
           <span class="fa fa-user-cog"></span> <?php echo $user ?> </a>
           <div class="dropdown-menu" id="dropdown-menu">
@@ -12,6 +12,7 @@
             <a class="nav-item dropdown-item <?php echo ($page=="profile")?"active":"" ?>" data-toggle='modal' data-target='#profileModal'><span class="fa fa-user-circle"></span> Profile</a>
             <a class="nav-item dropdown-item  <?php echo ($page=="wishlist")?"active":"" ?>" href="wishlist.php"><span class="fa fa-tasks"></span> Wishlist</a>
             <a class="nav-item dropdown-item  <?php echo ($page=="cart")?"active":"" ?>" href="cart.php"><span class="fa fa-shopping-cart"></span> Cart <span class="badge badge-pill badge-secondary"><?php echo $cart_count;?></span></a>
+            <a class="nav-item dropdown-item  <?php echo ($page=="orders")?"active":"" ?>" href="orders.php"><span class="fa fa-box"></span> Orders </a>
           </div>
       </li>
       <li class="nav-item">
