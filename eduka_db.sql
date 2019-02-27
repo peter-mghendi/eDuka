@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2019 at 08:23 PM
+-- Generation Time: Feb 27, 2019 at 05:22 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -21,6 +21,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `eduka_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `user` varchar(255) NOT NULL,
+  `product` varchar(255) NOT NULL,
+  `quantity` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -45,6 +58,31 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 (5, 'cutlery'),
 (6, 'electronics'),
 (7, 'furniture');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `order_id` varchar(255) NOT NULL,
+  `user` varchar(255) NOT NULL,
+  `products` varchar(255) NOT NULL,
+  `quantities` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `order_id`, `user`, `products`, `quantities`, `status`) VALUES
+(1, 'inRXBQCTjXQS', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending confirmation'),
+(2, 'X1E9g9dH37Oo', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending confirmation'),
+(3, 'RrR305RPaLo4', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation'),
+(4, 'lyNh6GyxH13k', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation');
 
 -- --------------------------------------------------------
 
@@ -124,16 +162,30 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`id`, `user`, `product`) VALUES
-(13, 'buhT1f1c58vM', '0000000');
+(4, 'nzEkTan1Jict', '0000002'),
+(19, 'nzEkTan1Jict', '0000003'),
+(20, 'nzEkTan1Jict', '0000000');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -159,10 +211,22 @@ ALTER TABLE `wishlist`
 --
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -180,7 +244,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
