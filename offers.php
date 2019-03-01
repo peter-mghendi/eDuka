@@ -24,7 +24,7 @@ $num=8; $user = $_SESSION['token']; $productSets=array("new", "popular", "monthl
 <div class="album py-5 bg-light">
     <div class="container">
     <?php foreach ($productSets as $productSet){ $title = $productSet=='monthly'?date('F'):$productSet;
-      echo "<div class='jumbotron d-flex'><img src='assets/images/banners/new.jpg' class='img-fluid' alt =''></div>";
+      echo "<div class='jumbotron d-flex'><img src='assets/images/banners/banner.jpg' class='img-fluid' alt =''></div>";
       echo "<div class='container-fluid product-set' id='new'><div class='d-flex'><h3 class='set-title'>$title items</h3><h3 class='ml-auto'><small><a href='#'>SEE MORE >></a></small></h3></div><hr><div class='row'>";
       $i = 0;
       $set_query = "SELECT * FROM products";
