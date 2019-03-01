@@ -1,4 +1,4 @@
-<?php echo "<div class='col-md-3'><div class='card md-3 shadow-sm'>
+<?php echo "<div class='col-md-3'><div class='card mb-3 shadow-sm'>
 <img src='assets/images/products/$set_row[1].jpg' id='images'>
   <div class='card-body'><small><h6 style='text-transform: uppercase'>$set_row[2]</h6></small><h5>$set_row[3]</h5>
   <p class='list-price text-danger'>List Price: <s>Kshs. $set_row[5]</s></p><p class='price'>Our Price: Kshs. $set_row[6]</p>       
