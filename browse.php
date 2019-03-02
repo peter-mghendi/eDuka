@@ -32,26 +32,30 @@
                 <span class="spinner-grow spinner-grow-sm"></span> Show/Hide Controls</button>
         </div>
 
-        <div id="controls" class="collapse show"><form action="$" method="post" class="form"><div class="container"><div class="form-group row">
-                        <div class="col-xs-12 col-sm-6 col-md-4"><label for="#search">Search Term:</label><input
-                                type="search" id='search' name='search' class="form-control"></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4"><label for="brand">Brand:</label> <select name="cars"
-                                size="1" class="form-control" id='brand' name='brand'>
-                                <?php for($i=0; $i<4; $i++) echo " <option value='option$i'>Option $i</option>"; ?>
-                            </select></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4"><label for="price">Price:</label><input type="range"
-                                class="form-control" id='price' name='price'></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4"><label for="category">Category:</label><input
+        <div id="controls" class="collapse show"><div class="container"><form action="$" method="post" class="form">
+        <div class="form-group row">
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2"><input type="search" id='search' name='search' 
+                        class="form-control" placeholder='Search Term'></div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2"><select class="selectpicker" id='brand' name='brand' multiple='multiple'
+                                data-live-search="true" title="Select a brand..." data-selected-text-format="count > 3" data-width="100%" 
+                                data-size="5" data-actions-box="true"  data-header="Select a brand">
+                                <?php for($i=0; $i<4; $i++) echo "<option>Brand $i</option>"; ?>
+                        </select></div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2 form-inline">
+                            <label for="price_min">Price: </label><input type="number"class="form-control" id='price_min' name='price_min'>
+                            <label for="price_max">To: </label><input type="number"class="form-control" id='price_max' name='price_max'>
+                            </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2"><label for="category">Category:</label><input
                                 type="text" class="form-control" id='category' name='category'></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4"><label for="saletype">Sale Type:</label><input
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2"><label for="saletype">Sale Type:</label><input
                                 type="text" class="form-control" id='saletype' name='saletype'></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4"><label for="status">Status:</label><input type="text"
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2"><label for="status">Status:</label><input type="text"
                                 class="form-control" id='status' name='status'></div>
                         <div class="col-xs-12 col-sm-6 col-md-6"><input type="reset"
                                 class="btn btn-secondary btn-block"></div>
                         <div class="col-xs-12 col-sm-6 col-md-6"><input type="submit" class="btn btn-primary btn-block"
                                 id='filter' name='filter' value="Submit"></div>
-    </div></div></form></div></div>
+    </div></form></div></div>
 
     <div class="album py-5 bg-light"><div class="container"><div class='row'>
             <?php 
@@ -80,9 +84,12 @@
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item"><a class="page-link" href="#">Next</a></li>
     </ul> 
+    <?php include 'assets/php/footer.php'; ?>
 
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>                 -->
     <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/bootstrap-select.min.js"></script>
     <script src="../js/webfont.js"></script>
     <script src="assets/js/main.js"></script>
     <?php include 'assets/php/_error.php'; ?>

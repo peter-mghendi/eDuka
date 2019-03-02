@@ -13,7 +13,7 @@ nav>div>ul>li.nav-item.active{
 nav>div>ul>li.nav-item:hover{
     border: 1px white solid;
     transition-duration: 500ms;}
-.dropdown-menu{
+#dropdown-menu{
     padding-bottom: 16px;
     margin-bottom: 16px;
     border-bottom-left-radius: 24px;
@@ -193,7 +193,8 @@ section .section-title {
     margin-bottom: -40px;
     padding: 0px;
 }
-
-.btn-block{
-    margin-top: 16px;
-}
+select {
+    font-size: 50px !important;
+    padding: 6px 10px !important;
+    box-sizing: content-box !important;
+  }
