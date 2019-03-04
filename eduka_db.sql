@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2019 at 05:22 AM
+-- Generation Time: Mar 04, 2019 at 05:55 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -82,7 +82,10 @@ INSERT INTO `orders` (`id`, `order_id`, `user`, `products`, `quantities`, `statu
 (1, 'inRXBQCTjXQS', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending confirmation'),
 (2, 'X1E9g9dH37Oo', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending confirmation'),
 (3, 'RrR305RPaLo4', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation'),
-(4, 'lyNh6GyxH13k', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation');
+(4, 'lyNh6GyxH13k', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation'),
+(5, '9dXSHpjltGEN', 'buhT1f1c58vM', '0000000;0000004', '1;1', 'pending confirmation'),
+(6, 'bpncf6OrL9tu', 'buhT1f1c58vM', '0000002;0000000;0000001', '3;2;4', 'pending confirmation'),
+(7, 'Bp8Q9BKa98EB', 'jpUGbgHBuxKU', '0000000;0000003;0000002', '3;5;2', 'pending confirmation');
 
 -- --------------------------------------------------------
 
@@ -134,16 +137,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `token`, `name`, `email`, `password`, `status`) VALUES
-(2, 'j5Cms440NCpB', 'Peet', 'petey@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'active'),
-(4, 'ylLXPt7PbX8L', 'Daizy', 'daisy@mail.com', '22d7fe8c185003c98f97e5d6ced420c7', 'active'),
-(5, 'jpUGbgHBuxKU', 'Paul', 'paul@mail.com', '15472cd29f632e34f039403f2e635f66', 'deactivated'),
+(2, 'j5Cms440NCpB', 'Peet', 'petey@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
+(4, 'ylLXPt7PbX8L', 'Daizy', 'daisy@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
+(5, 'jpUGbgHBuxKU', 'Paul', 'paul@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
 (6, 'buhT1f1c58vM', 'Hezron', 'hezron@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
 (8, 'FMhmNb2WBomM', 'Sam', 'sam@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
 (9, 'GxJ753FcspYl', 'Arjun', 'arjun@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
 (10, 'nzEkTan1Jict', 'Denzo', 'denzo@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
-(11, 'mEySc2TOaE1S', 'Mike', 'mike@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
-(12, 'uIXql5RvNLHt', 'Edit', 'mick@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
-(13, 'E8NIAWe4btny', 'lopunok', 'lopuno10@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'active');
+(11, 'mEySc2TOaE1S', 'Mike', 'mike@mail.com', '15472cd29f632e34f039403f2e635f66', 'active');
 
 -- --------------------------------------------------------
 
@@ -162,9 +163,11 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`id`, `user`, `product`) VALUES
-(4, 'nzEkTan1Jict', '0000002'),
 (19, 'nzEkTan1Jict', '0000003'),
-(20, 'nzEkTan1Jict', '0000000');
+(20, 'nzEkTan1Jict', '0000000'),
+(22, 'buhT1f1c58vM', '0000002'),
+(24, 'jpUGbgHBuxKU', '0000000'),
+(26, 'jpUGbgHBuxKU', '0000002');
 
 --
 -- Indexes for dumped tables
@@ -226,7 +229,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -238,13 +241,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
