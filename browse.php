@@ -1,8 +1,8 @@
 <?php 
     include 'assets/php/_connect.php';
-    $user = $_SESSION['token'];
     include 'assets/php/_browse.php';
     if (session_status() == PHP_SESSION_NONE) session_start();
+    $user = isset($_SESSION['token'])?$_SESSION['token']:"";
     if (isset($_SESSION['token'])){
         include 'assets/php/account/edit.php';
         include 'assets/php/_add.php';
@@ -34,36 +34,45 @@
 
         <div id="controls" class="collapse show"><div class="container"><form action="$" method="post" class="form">
         <div class="form-group row">
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2"><input type="search" id='search' name='search' 
-                        class="form-control" placeholder='Search Term'></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2"><select class="selectpicker" id='brand' name='brand' multiple='multiple'
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><input type="search" id='search' name='search' 
+                        class="form-control-plaintext px-3" placeholder='Search Term'></div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='brand' name='brand' multiple='multiple'
                                 data-live-search="true" title="Select a brand..." data-selected-text-format="count > 3" data-width="100%" 
                                 data-size="5" data-actions-box="true"  data-header="Select a brand">
                                 <?php for($i=0; $i<4; $i++) echo "<option>Brand $i</option>"; ?>
                         </select></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2 form-inline">
-                            <label for="price_min">Price: </label><input type="number"class="form-control" id='price_min' name='price_min'>
-                            <label for="price_max">To: </label><input type="number"class="form-control" id='price_max' name='price_max'>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3 form-inline"><div class="d-flex">
+                            <div class="mr-auto">
+                                <input type="number" class="form-control-plaintext px-2.5" id='price_min' name='price_min' placeholder='Min Price' 
+                                min='0' step='1000' style="width: 100%">
                             </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2"><label for="category">Category:</label><input
-                                type="text" class="form-control" id='category' name='category'></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2"><label for="saletype">Sale Type:</label><input
-                                type="text" class="form-control" id='saletype' name='saletype'></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-2"><label for="status">Status:</label><input type="text"
-                                class="form-control" id='status' name='status'></div>
-                        <div class="col-xs-12 col-sm-6 col-md-6"><input type="reset"
-                                class="btn btn-secondary btn-block"></div>
-                        <div class="col-xs-12 col-sm-6 col-md-6"><input type="submit" class="btn btn-primary btn-block"
+                            <div class="mx-auto align-middle"><p class="px-2">to</p></div>
+                            <div class="ml-auto">
+                                <input type="number" class="form-control-plaintext px-3" id='price_max' name='price_max' placeholder='Max Price' 
+                                min='0' step='1000' style="width: 100%"></div>
+                        </div></div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='category' name='category' multiple='multiple'
+                                data-live-search="true" title="Select a category..." data-selected-text-format="count > 3" data-width="100%" 
+                                data-size="5" data-actions-box="true"  data-header="Select a category">
+                                <?php for($i=0; $i<4; $i++) echo "<option>Category $i</option>"; ?>
+                        </select></div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='saletype' name='saletype' multiple='multiple'
+                                data-live-search="true" title="Select a sale type..." data-selected-text-format="count > 3" data-width="100%" 
+                                data-size="5" data-actions-box="true"  data-header="Select a sale type">
+                                <?php for($i=0; $i<4; $i++) echo "<option>Sale Type $i</option>"; ?>
+                        </select></div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='status' name='status' multiple='multiple'
+                                data-live-search="true" title="Select a status..." data-selected-text-format="count > 3" data-width="100%" 
+                                data-size="5" data-actions-box="true"  data-header="Select a status">
+                                <?php for($i=0; $i<4; $i++) echo "<option>Status $i</option>"; ?>
+                        </select></div>
+                        <div class="col-xs-12 col-sm-6 col-md-6"><input type="reset" class="btn btn-outline-secondary btn-block"></div>
+                        <div class="col-xs-12 col-sm-6 col-md-6"><input type="submit" class="btn btn-outline-primary btn-block"
                                 id='filter' name='filter' value="Submit"></div>
     </div></form></div></div>
 
     <div class="album py-5 bg-light"><div class="container"><div class='row'>
-            <?php 
-                # Remember to remove this for loop.
-                for($x=0; $x<4; $x++){
-                $i=0;
-                $set_query = "SELECT * FROM products LIMIT $start, $step";
-                $set_result = mysqli_query($db, $set_query) or die(mysqli_error($db));
+            <?php
                 while($set_row = mysqli_fetch_row($set_result)){
                 $categories = explode(";", $set_row[7]);
                 $product = $set_row[1];
@@ -73,8 +82,7 @@
                 $wished = ($wished_count == 1)?"fa":"far";
                 $wished_status = ($wished_count == 1)?"Added":"Add";
                 include 'assets/php/product.php';
-                include 'assets/php/details.php';
-                $i++;} }?>
+                include 'assets/php/details.php'; }?>
     </div></div></div>
 
     <ul class="pagination justify-content-center">
