@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['submit'])){
+if (isset($_POST['edit'])){
     extract($_POST);
     $target_dir = "assets/images/users/";
     $target_file = $target_dir.$token.".jpg";

@@ -66,7 +66,7 @@
 
         <div class="btn-group">
             <button type="reset" class="btn btn-other" name="reset">Reset</button>
-            <button type="submit" class="btn btn-other" name="submit">Update</button>
+            <button type="submit" class="btn btn-other" name="edit">Update</button>
         </div>
     </form>
 </div>
@@ -95,7 +95,7 @@
 
         <div class="btn-group">
             <button type="reset" class="btn btn-other" name="reset">Reset</button>
-            <button type="submit" class="btn btn-other" name="submit">Update</button>
+            <button type="submit" class="btn btn-other" name="edit">Update</button>
         </div>
     </form>
 </div>

@@ -1,6 +1,9 @@
 <?php
     $step = 20; # Number of products per page
-    if (!isset($_GET['page']) || $_GET['page'] <= 0) header("location: browse.php?&page=1");
+    # Fix the redirect here.
+    $page = $_SERVER['PHP_SELF'];
+    var_dump($page);
+    if (!isset($_GET['page']) || $_GET['page'] <= 0) header("location: $page?&page=1");
     extract($_GET);
     $start = $step*($page-1);
 
