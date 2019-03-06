@@ -26,8 +26,9 @@
     <?php 
     include 'assets/php/_nav.php';
     include 'assets/php/modal.php';
-?>
-    <div class="jumbotron-fluid bg-light" style='padding: 8px; padding-top:0px'>
+    ?>
+
+    <div class="jumbotron-fluid bg-light" style='padding: 8px; margin-top: 32px'>
         <div class="container-fluid d-flex">
             <button class="btn btn-outline-primary ml-auto mt-5 mb-3" data-toggle="collapse" data-target="#controls">
                 <span class="spinner-grow spinner-grow-sm"></span> Show/Hide Controls</button>
@@ -37,36 +38,48 @@
         <div class="form-group row">
                         <input type="hidden" id='page' name='page' class="form-control-plaintext px-3" value="<?php echo $_GET['page'] ?>" hidden="hidden">
                         <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><input type="search" id='search' name='search' 
-                        class="form-control-plaintext px-3" placeholder='Search Term'></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='brand' name='brand[]' multiple='multiple'
-                                data-live-search="true" title="Select a brand..." data-selected-text-format="count > 3" data-width="100%" 
-                                data-size="5" data-actions-box="true"  data-header="Select a brand">
-                                <?php while($brand_row = mysqli_fetch_row($brand_result)) echo "<option>$brand_row[0]</option>"; ?>
-                        </select></div>
+                        class="form-control-plaintext px-3" placeholder='Search Term' value="<?php echo isset($search)?$search:'';?>"></div>
                         <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='category' name='category[]' multiple='multiple'
                                 data-live-search="true" title="Select a category..." data-selected-text-format="count > 3" data-width="100%" 
                                 data-size="5" data-actions-box="true"  data-header="Select a category">
-                                <?php foreach ($categories_distinct as $category_distinct) echo "<option class='set-title'>$category_distinct</option>"; ?>
+                                <?php foreach ($categories_distinct as $category_distinct){
+                                    $category_selected = (in_array($category_distinct, $category))?"selected":"";
+                                    echo "<option class='set-title' $category_selected>$category_distinct</option>"; 
+                                }?>
+                        </select></div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='brand' name='brand[]' multiple='multiple'
+                                data-live-search="true" title="Select a brand..." data-selected-text-format="count > 3" data-width="100%" 
+                                data-size="5" data-actions-box="true"  data-header="Select a brand">
+                                <?php while($brand_row = mysqli_fetch_row($brand_result)){ 
+                                    $brand_selected = (in_array($brand_row[0], $brand))?"selected":"";
+                                    echo "<option class='set-title' $brand_selected>$brand_row[0]</option>"; 
+                                }?>
                         </select></div>
                         <div class="col-xs-12 col-sm-6 col-md-4 mb-3 form-inline"><div class="d-flex">
                             <div class="mr-auto">
                                 <input type="number" class="form-control-plaintext px-3" id='price_min' name='price_min' placeholder='Min Price' 
-                                min='0' step='1000' style="width: 100%">
+                                min='0' value="<?php echo isset($price_min)?$price_min:'';?>" style="width: 100%">
                             </div>
                             <div class="mx-auto align-middle"><p class="px-2">to</p></div>
                             <div class="ml-auto">
                                 <input type="number" class="form-control-plaintext px-3" id='price_max' name='price_max' placeholder='Max Price' 
-                                min='0' step='1000' style="width: 100%"></div>
+                                min='0' value="<?php echo isset($price_min)?$price_min:'';?>" style="width: 100%"></div>
                         </div></div>
                         <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='saletype' name='saletype[]' multiple='multiple'
                                 data-live-search="true" title="Select a sale type..." data-selected-text-format="count > 3" data-width="100%" 
                                 data-size="5" data-actions-box="true"  data-header="Select a sale type">
-                                <?php foreach ($saletypes_distinct as $saletype_distinct) echo "<option class='set-title'>$saletype_distinct</option>"; ?>
+                                <?php foreach ($saletypes_distinct as $saletype_distinct){ 
+                                    $saletype_selected = (in_array($saletype_distinct, $saletype))?"selected":"";
+                                    echo "<option class='set-title' $saletype_selected>$saletype_distinct</option>"; 
+                                }?>
                         </select></div>
                         <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='status' name='status[]' multiple='multiple'
                                 data-live-search="true" title="Select a status..." data-selected-text-format="count > 3" data-width="100%" 
                                 data-size="5" data-actions-box="true"  data-header="Select a status">
-                                <?php foreach ($statuses_distinct as $status_distinct) echo "<option class='set-title'>$status_distinct</option>"; ?>
+                                <?php foreach ($statuses_distinct as $status_distinct){ 
+                                    $status_selected = (in_array($status_distinct, $status))?"selected":"";
+                                    echo "<option class='set-title' $status_selected>$status_distinct</option>";
+                                }?>
                         </select></div>
                         <div class="col-xs-12 col-sm-6 col-md-6"><input type="reset" class="btn btn-outline-secondary btn-block"></div>
                         <div class="col-xs-12 col-sm-6 col-md-6"><input type="submit" class="btn btn-outline-primary btn-block"

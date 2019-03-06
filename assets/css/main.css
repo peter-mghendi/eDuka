@@ -193,3 +193,6 @@ section .section-title {
     margin-bottom: -40px;
     padding: 0px;
 }
+.body-content{
+    margin-top: 80px;
+}
