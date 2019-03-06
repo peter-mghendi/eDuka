@@ -48,7 +48,7 @@
             $_SESSION['user'] = $name;
             if (isset($_SESSION['login_error'])) $_SESSION['login_error'] = null;
             if (isset($_SESSION['signup_error'])) $_SESSION['signup_error'] = null;
-            header("location: index.php");
+            header("location: $this_page");
         }
     }
 ?>

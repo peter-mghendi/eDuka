@@ -25,6 +25,7 @@
 <body>
     <?php 
     include 'assets/php/_nav.php';
+    include 'assets/php/modal.php';
 ?>
     <div class="jumbotron-fluid bg-light" style='padding: 8px; padding-top:0px'>
         <div class="container-fluid d-flex">

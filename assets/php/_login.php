@@ -20,7 +20,7 @@ if ($log_count==0){
     $_SESSION['token'] = $log_row[1];
     if (isset($_SESSION['login_error'])) $_SESSION['login_error'] = null;
     if (isset($_SESSION['signup_error'])) $_SESSION['signup_error'] = null;
-    header("location: index.php");
+    header("location: $this_page");
 }
 }
 ?>
