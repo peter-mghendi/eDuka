@@ -32,18 +32,24 @@
                 <span class="spinner-grow spinner-grow-sm"></span> Show/Hide Controls</button>
         </div>
 
-        <div id="controls" class="collapse show"><div class="container"><form action="$" method="post" class="form">
+        <div id="controls" class="collapse show"><div class="container"><form action="<?php $_PHP_SELF ?>" method="get" class="form">
         <div class="form-group row">
+                        <input type="hidden" id='page' name='page' class="form-control-plaintext px-3" value="<?php echo $_GET['page'] ?>" hidden="hidden">
                         <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><input type="search" id='search' name='search' 
                         class="form-control-plaintext px-3" placeholder='Search Term'></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='brand' name='brand' multiple='multiple'
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='brand' name='brand[]' multiple='multiple'
                                 data-live-search="true" title="Select a brand..." data-selected-text-format="count > 3" data-width="100%" 
                                 data-size="5" data-actions-box="true"  data-header="Select a brand">
-                                <?php for($i=0; $i<4; $i++) echo "<option>Brand $i</option>"; ?>
+                                <?php while($brand_row = mysqli_fetch_row($brand_result)) echo "<option>$brand_row[0]</option>"; ?>
+                        </select></div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='category' name='category[]' multiple='multiple'
+                                data-live-search="true" title="Select a category..." data-selected-text-format="count > 3" data-width="100%" 
+                                data-size="5" data-actions-box="true"  data-header="Select a category">
+                                <?php foreach ($categories_distinct as $category_distinct) echo "<option class='set-title'>$category_distinct</option>"; ?>
                         </select></div>
                         <div class="col-xs-12 col-sm-6 col-md-4 mb-3 form-inline"><div class="d-flex">
                             <div class="mr-auto">
-                                <input type="number" class="form-control-plaintext px-2.5" id='price_min' name='price_min' placeholder='Min Price' 
+                                <input type="number" class="form-control-plaintext px-3" id='price_min' name='price_min' placeholder='Min Price' 
                                 min='0' step='1000' style="width: 100%">
                             </div>
                             <div class="mx-auto align-middle"><p class="px-2">to</p></div>
@@ -51,20 +57,15 @@
                                 <input type="number" class="form-control-plaintext px-3" id='price_max' name='price_max' placeholder='Max Price' 
                                 min='0' step='1000' style="width: 100%"></div>
                         </div></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='category' name='category' multiple='multiple'
-                                data-live-search="true" title="Select a category..." data-selected-text-format="count > 3" data-width="100%" 
-                                data-size="5" data-actions-box="true"  data-header="Select a category">
-                                <?php for($i=0; $i<4; $i++) echo "<option>Category $i</option>"; ?>
-                        </select></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='saletype' name='saletype' multiple='multiple'
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='saletype' name='saletype[]' multiple='multiple'
                                 data-live-search="true" title="Select a sale type..." data-selected-text-format="count > 3" data-width="100%" 
                                 data-size="5" data-actions-box="true"  data-header="Select a sale type">
-                                <?php for($i=0; $i<4; $i++) echo "<option>Sale Type $i</option>"; ?>
+                                <?php foreach ($saletypes_distinct as $saletype_distinct) echo "<option class='set-title'>$saletype_distinct</option>"; ?>
                         </select></div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='status' name='status' multiple='multiple'
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='status' name='status[]' multiple='multiple'
                                 data-live-search="true" title="Select a status..." data-selected-text-format="count > 3" data-width="100%" 
                                 data-size="5" data-actions-box="true"  data-header="Select a status">
-                                <?php for($i=0; $i<4; $i++) echo "<option>Status $i</option>"; ?>
+                                <?php foreach ($statuses_distinct as $status_distinct) echo "<option class='set-title'>$status_distinct</option>"; ?>
                         </select></div>
                         <div class="col-xs-12 col-sm-6 col-md-6"><input type="reset" class="btn btn-outline-secondary btn-block"></div>
                         <div class="col-xs-12 col-sm-6 col-md-6"><input type="submit" class="btn btn-outline-primary btn-block"
@@ -73,28 +74,60 @@
 
     <div class="album py-5 bg-light"><div class="container"><div class='row'>
             <?php
+            /* 
+                Available controls:
+                - Sale Type
+                - Status
+                - Page (start, step)
+            */
                 while($set_row = mysqli_fetch_row($set_result)){
-                $categories = explode(";", $set_row[7]);
-                $product = $set_row[1];
-                $wished_query = "SELECT * FROM wishlist WHERE user = '$user' AND product = '$product'";
-                $wished_result = mysqli_query($db, $wished_query) or die(mysqli_error());
-                $wished_count = mysqli_num_rows($wished_result);
-                $wished = ($wished_count == 1)?"fa":"far";
-                $wished_status = ($wished_count == 1)?"Added":"Add";
-                include 'assets/php/product.php';
-                include 'assets/php/details.php'; }?>
+                    extract($_GET);
+                    $product = $set_row[1];
+                    $pr_brand = $set_row[2];
+                    $pr_name = $set_row[3]; 
+                    $pr_desc = $set_row[4];
+                    $pr_price = (int) $set_row[6];
+                    $saletype_array = explode(";", $set_row[7]);
+                    $category_array = explode(";", $set_row[8]);
+                    $tag_array = explode(";", $set_row[9]);
+                    $status_array = explode(";", $set_row[10]);
+
+                    $price_min = empty($price_min)?null:$price_min;
+                    $price_max = empty($price_max)?null:$price_max;
+
+                    if (isset($search)) if ((stripos($pr_brand, $search) === false) && (stripos($pr_name, $search) === false) && !in_array($search, $tag_array)) continue;
+                    if (isset($brand)) if (!in_array($pr_brand, $brand)) continue;
+                    if (isset($category)) if (sizeof(array_intersect($category_array, $category)) == 0) continue;
+                    if (isset($price_min)) {$price_min = intval($price_min); if ($pr_price < $price_min) continue;}
+                    if (isset($price_max)) {$price_max = intval($price_max); if ($pr_price > $price_max) continue;}
+                    if (isset($saletype)) if (sizeof(array_intersect($saletype_array, $saletype)) == 0) continue;
+                    if (isset($status)) if (sizeof(array_intersect($status_array, $status)) == 0) continue;
+
+                    $wished_query = "SELECT * FROM wishlist WHERE user = '$user' AND product = '$product'";
+                    $wished_result = mysqli_query($db, $wished_query) or die(mysqli_error());
+                    $wished_count = mysqli_num_rows($wished_result);
+                    $wished = ($wished_count == 1)?"fa":"far";
+                    $wished_status = ($wished_count == 1)?"Added":"Add";
+                    include 'assets/php/product.php';
+                    include 'assets/php/details.php'; }?>
     </div></div></div>
 
     <ul class="pagination justify-content-center">
-        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <?php
+            $page = $_GET['page'];
+            $next = $page + 1;
+            $prev = $page - 1;
+            echo "<li class='page-item $prev_enabled'><a class='page-link' href='browse.php?&page=$prev'>Previous</a></li>";
+            for($i=1; $i<=$pages; $i++){
+                if ($i == $page) $current_page = "active";
+                else $current_page = "";
+                echo "<li class='page-item $current_page'><a class='page-link' href='browse.php?&page=$i'>$i</a></li>";
+            }
+            echo "<li class='page-item $next_enabled'><a class='page-link' href='browse.php?&page=$next'>Next</a></li>"
+        ?>
     </ul> 
     <?php include 'assets/php/footer.php'; ?>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>                 -->
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/bootstrap-select.min.js"></script>

@@ -193,8 +193,3 @@ section .section-title {
     margin-bottom: -40px;
     padding: 0px;
 }
-select {
-    font-size: 50px !important;
-    padding: 6px 10px !important;
-    box-sizing: content-box !important;
-  }
