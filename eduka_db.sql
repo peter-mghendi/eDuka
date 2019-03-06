@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2019 at 05:55 PM
+-- Generation Time: Mar 06, 2019 at 11:53 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -25,6 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cart`
 --
 
@@ -38,30 +51,6 @@ CREATE TABLE `cart` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
---
-
-CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'computing'),
-(2, 'household'),
-(3, 'clothing'),
-(4, 'shoes'),
-(5, 'cutlery'),
-(6, 'electronics'),
-(7, 'furniture');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `orders`
 --
 
@@ -71,21 +60,22 @@ CREATE TABLE `orders` (
   `user` varchar(255) NOT NULL,
   `products` varchar(255) NOT NULL,
   `quantities` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL
+  `status` varchar(255) NOT NULL,
+  `mode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `order_id`, `user`, `products`, `quantities`, `status`) VALUES
-(1, 'inRXBQCTjXQS', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending confirmation'),
-(2, 'X1E9g9dH37Oo', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending confirmation'),
-(3, 'RrR305RPaLo4', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation'),
-(4, 'lyNh6GyxH13k', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation'),
-(5, '9dXSHpjltGEN', 'buhT1f1c58vM', '0000000;0000004', '1;1', 'pending confirmation'),
-(6, 'bpncf6OrL9tu', 'buhT1f1c58vM', '0000002;0000000;0000001', '3;2;4', 'pending confirmation'),
-(7, 'Bp8Q9BKa98EB', 'jpUGbgHBuxKU', '0000000;0000003;0000002', '3;5;2', 'pending confirmation');
+INSERT INTO `orders` (`id`, `order_id`, `user`, `products`, `quantities`, `status`, `mode`) VALUES
+(1, 'inRXBQCTjXQS', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending confirmation', ''),
+(2, 'X1E9g9dH37Oo', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending confirmation', ''),
+(3, 'RrR305RPaLo4', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation', ''),
+(4, 'lyNh6GyxH13k', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation', ''),
+(5, '9dXSHpjltGEN', 'buhT1f1c58vM', '0000000;0000004', '1;1', 'pending confirmation', ''),
+(6, 'bpncf6OrL9tu', 'buhT1f1c58vM', '0000002;0000000;0000001', '3;2;4', 'pending confirmation', ''),
+(7, 'Bp8Q9BKa98EB', 'jpUGbgHBuxKU', '0000000;0000003;0000002', '3;5;2', 'pending confirmation', '');
 
 -- --------------------------------------------------------
 
@@ -103,6 +93,7 @@ CREATE TABLE `products` (
   `price` varchar(255) NOT NULL,
   `saletype` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
+  `tags` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -110,12 +101,12 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `token`, `brand`, `name`, `description`, `old_price`, `price`, `saletype`, `category`, `status`) VALUES
-(1, '0000000', 'Lenovo', 'Ideapad 120S', 'The ultimate students\' laptop. Take it with you wherever.', '32000', '29000', 'featured;new;popular;flash', '', 'available'),
-(2, '0000001', 'Logitech', 'Flexiboard', 'Roll up this keyboard and take it anywhere you go.', '5000', '3500', 'featured;popular;monthly;flash', '', 'available'),
-(3, '0000002', 'Hisense', '22\" HD Monitor', 'View everything in stunning HD with this new addition.', '27000', '22000', 'featured;new;popular;monthly;flash', '', 'available'),
-(4, '0000003', 'Logitech', 'Flexiboard', 'Roll up this keyboard and take anywhere you go.', '5000', '3500', 'new;monthly;flash', '', 'available'),
-(5, '0000004', 'Hisense', '22\" HD Monitor', 'View everything in stunning HD with this new addition.', '27000', '22000', 'new;popular;monthly', '', 'available');
+INSERT INTO `products` (`id`, `token`, `brand`, `name`, `description`, `old_price`, `price`, `saletype`, `category`, `tags`, `status`) VALUES
+(1, '0000000', 'Lenovo', 'Ideapad 120S', 'The ultimate students\' laptop. Take it with you wherever.', '32000', '29000', 'featured;new;popular;flash', 'computing;laptops', '', 'available'),
+(2, '0000001', 'Logitech', 'Flexiboard', 'Roll up this keyboard and take it anywhere you go.', '5000', '3500', 'featured;popular;monthly;flash', 'accessories', '', 'available'),
+(3, '0000002', 'Hisense', '22\" HD Monitor', 'View everything in stunning HD with this new addition.', '27000', '22000', 'featured;new;popular;monthly;flash', '', '', 'available'),
+(4, '0000003', 'Logitech', 'Flexiboard', 'Roll up this keyboard and take anywhere you go.', '5000', '3500', 'new;monthly;flash', '', '', 'available'),
+(5, '0000004', 'Hisense', '22\" HD Monitor', 'View everything in stunning HD with this new addition.', '27000', '22000', 'new;popular;monthly', '', '', 'available');
 
 -- --------------------------------------------------------
 
@@ -174,15 +165,15 @@ INSERT INTO `wishlist` (`id`, `user`, `product`) VALUES
 --
 
 --
--- Indexes for table `cart`
+-- Indexes for table `admins`
 --
-ALTER TABLE `cart`
+ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categories`
+-- Indexes for table `cart`
 --
-ALTER TABLE `categories`
+ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -214,16 +205,16 @@ ALTER TABLE `wishlist`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `orders`
