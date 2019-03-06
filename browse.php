@@ -13,7 +13,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +20,6 @@
     <title>Browse | eDuka</title>
     <?php include 'assets/php/_css.php'; ?>
 </head>
-
 <body>
     <?php 
     include 'assets/php/_nav.php';
@@ -85,15 +83,8 @@
                         <div class="col-xs-12 col-sm-6 col-md-6"><input type="submit" class="btn btn-outline-primary btn-block"
                                 id='filter' name='filter' value="Submit"></div>
     </div></form></div></div>
-
     <div class="album py-5 bg-light"><div class="container"><div class='row'>
             <?php
-            /* 
-                Available controls:
-                - Sale Type
-                - Status
-                - Page (start, step)
-            */
                 while($set_row = mysqli_fetch_row($set_result)){
                     extract($_GET);
                     $product = $set_row[1];
@@ -125,7 +116,6 @@
                     include 'assets/php/product.php';
                     include 'assets/php/details.php'; }?>
     </div></div></div>
-
     <ul class="pagination justify-content-center">
         <?php
             $page = $_GET['page'];
@@ -141,7 +131,6 @@
         ?>
     </ul> 
     <?php include 'assets/php/footer.php'; ?>
-
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/bootstrap-select.min.js"></script>
@@ -149,5 +138,4 @@
     <script src="assets/js/main.js"></script>
     <?php include 'assets/php/_error.php'; ?>
 </body>
-
 </html>

@@ -1,5 +1,5 @@
 <?php
-    $step = 20; # Number of products per page
+    $step = 20; 
     $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $new_url = basename($_SERVER['PHP_SELF'])=="browse.php"?$url."?page=1":$url."&page=1";
     if (!isset($_GET['page']) || $_GET['page'] <= 0) header("location: $new_url");
