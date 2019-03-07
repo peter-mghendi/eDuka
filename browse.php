@@ -85,6 +85,7 @@
     </div></form></div></div>
     <div class="album py-5 bg-light"><div class="container"><div class='row'>
             <?php
+                $count = 0;
                 while($set_row = mysqli_fetch_row($set_result)){
                     extract($_GET);
                     $product = $set_row[1];
@@ -107,14 +108,18 @@
                     if (isset($price_max)) {$price_max = intval($price_max); if ($pr_price > $price_max) continue;}
                     if (isset($saletype)) if (sizeof(array_intersect($saletype_array, $saletype)) == 0) continue;
                     if (isset($status)) if (sizeof(array_intersect($status_array, $status)) == 0) continue;
-
+                    $count++;
                     $wished_query = "SELECT * FROM wishlist WHERE user = '$user' AND product = '$product'";
                     $wished_result = mysqli_query($db, $wished_query) or die(mysqli_error());
                     $wished_count = mysqli_num_rows($wished_result);
                     $wished = ($wished_count == 1)?"fa":"far";
                     $wished_status = ($wished_count == 1)?"Added":"Add";
                     include 'assets/php/product.php';
-                    include 'assets/php/details.php'; }?>
+                    include 'assets/php/details.php'; 
+                } if($count == 0){
+                    echo "<div class='d-flex w-100'><img src='assets/images/misc/no-results.gif' alt='No results found' class='w-50 mx-auto'></div>";
+                }
+                    ?>
     </div></div></div>
     <ul class="pagination justify-content-center">
         <?php

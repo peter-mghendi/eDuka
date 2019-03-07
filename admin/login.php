@@ -1,3 +1,17 @@
+<?php 
+	if (session_status() == PHP_SESSION_NONE) session_start();
+	include 'assets/php/_connect.php';
+	if (isset($_POST['submit'])){
+		extract($_POST);
+		$login_query = "SELECT * FROM admins WHERE username = '$user' AND password = '$pass'";
+		$login_result = mysqli_query($db, $login_query);
+		$login_count = mysqli_num_rows($login_result);
+		if ($login_count > 0) $_SESSION['admin'] = $user;
+		header("location: index.php");
+	}
+	extract($_POST);
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +44,7 @@
 		    </div>
 
     		<div class="d-flex"><button type="submit" class="btn btn-other btn-block mx-auto" name="submit">Sign In</button></div>
+    		<div class="d-flex"><a href="../" class="btn btn-other btn-block mx-auto">Back to site</a></div>
 		</div>  	
 		</form>
 		<div class="card-footer">
