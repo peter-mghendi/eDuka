@@ -17,6 +17,7 @@ if (isset($_GET['order'])){
     $productArray = array();
     $quantityArray = array();
     $status = "pending confirmation";
+    $mode = "pay on delivery";
 
     $compile_query = "SELECT * FROM cart WHERE user = '$user'";
     $compile_result = mysqli_query($db, $compile_query);
@@ -28,8 +29,9 @@ if (isset($_GET['order'])){
         }
         $products = implode(";", $productArray);
         $quantities = implode(";", $quantityArray);
-        $order_query = "INSERT INTO orders VALUES(NULL, '$order_id', '$user', '$products', '$quantities', '$status')";
-        mysqli_query($db, $order_query);
+        $order_query = "INSERT INTO orders VALUES(NULL, '$order_id', '$user', '$products', '$quantities', '$status', '$mode')";
+        var_dump($order_query);
+        mysqli_query($db, $order_query) or die(mysqli_error($db));
         mysqli_query($db, "DELETE FROM cart WHERE user = '$user'");
         $error = "<script> alert('Success! Your items have been ordered.');</script>";
         $_SESSION['order_error'] = $error;
