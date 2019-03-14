@@ -1,5 +1,7 @@
 <?php 
 $page = basename($_SERVER['PHP_SELF']);
+$wish_attrib = isset($_SESSION['user'])?"href='$page?&list=wishlist&user=$user&product=$product'":"data-toggle='modal' href='#loginModal'";
+$cart_attrib = isset($_SESSION['user'])?"href='$page?&list=cart&user=$user&product=$product'":"data-toggle='modal' href='#loginModal'";
 echo "<div class='modal fade' id='productModal_$set_row[1]'>
   <div class='modal-dialog'>
     <div class='modal-content'>
@@ -14,7 +16,7 @@ echo "<div class='modal fade' id='productModal_$set_row[1]'>
       </div>
       <div class='modal-footer d-flex'><div class='mx-auto'>".
         "<button class='btn btn-primary'><span class='fa fa-share-alt'></span> Share</button>
-        <a href='$page?&list=wishlist&user=$user&product=$product' class='btn btn-success'><span class='$wished fa-star'></span> $wished_status</a>
-        <a href='$page?&list=cart&user=$user&product=$product' class='btn btn-warning'><span class='fa fa-cart-plus'></span> Add to cart</a>
+        <a class='btn btn-success' $wish_attrib><span class='$wished fa-star'></span> $wished_status</a>
+        <a class='btn btn-warning' $cart_attrib><span class='fa fa-cart-plus'></span> Add to cart</a>
         <button class='btn btn-danger' data-dismiss='modal'><span class='fa fa-times'></span> Cancel</button>
       </div></div></div></div></div>";
