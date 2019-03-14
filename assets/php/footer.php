@@ -4,50 +4,55 @@
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Quick links</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>
+						<li><a href="indx.php"><i class="fa fa-angle-double-right"></i>Home</a></li>
+						<li><a href="offers.php"><i class="fa fa-angle-double-right"></i>Offers</a></li>
+						<li><a href="browse.php"><i class="fa fa-angle-double-right"></i>Browse</a></li>
+						<li><a href="#contactModal" data-toggle='modal'><i class="fa fa-angle-double-right"></i>Contact Us</a></li>
+						<li><a href="admin/"><i class="fa fa-angle-double-right"></i>Administrator</a></li>
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Quick links</h5>
+					<h5>Social</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>
+						<li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-angle-double-right"></i>Facebook</a></li>
+						<li><a href="https://www.twitter.com" target="_blank"><i class="fa fa-angle-double-right"></i>Twitter</a></li>
+						<li><a href="https://www.instagram.com" target="_blank"><i class="fa fa-angle-double-right"></i>Instagram</a></li>
+						<li><a href="https://www.github.com" target="_blank"><i class="fa fa-angle-double-right"></i>GitHub</a></li>
+						<li><a href="mailto:plenjo15@gmail.com" target="_blank"><i class="fa fa-angle-double-right"></i>Email</a></li>
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Quick links</h5>
+					<h5>Profile</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-						<li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
+					<?php if(isset($_SESSION['user'])): ?>
+						<li><a href="#profileModal" data-toggle='modal'><i class="fa fa-angle-double-right"></i>Profile</a></li>
+						<li><a href="wishlist.php"><i class="fa fa-angle-double-right"></i>Wishlist</a></li>
+						<li><a href="cart.php"><i class="fa fa-angle-double-right"></i>Cart</a></li>
+						<li><a href="orders.php"><i class="fa fa-angle-double-right"></i>Orders</a></li>
+						<li><a href="assets/php/_logout.php"><i class="fa fa-angle-double-right"></i>Log Out</a></li>
+					<?php else:?>
+						<li><a href="#loginModal" data-toggle='modal'><i class="fa fa-angle-double-right"></i>Log In</a></li>
+						<li><a href="#signupModal" data-toggle='modal'><i class="fa fa-angle-double-right"></i>Sign Up</a></li>
+					<?php endif; ?>
 					</ul>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fab fa-facebook-f"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fab fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fab fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fab fa-google-plus"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.github.com" target="_blank"><i class="fab fa-github"></i></a></li>
+						<li class="list-inline-item"><a href="mailto:plenjo15@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
 				<hr>
 			</div>	
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-					<p><u><a href="https://www.nationaltransaction.com/">National Transaction Corporation</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>
-					<p class="h6">&copy <?php echo date("Y");?> All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Sunlimetech</a></p>
+					<p>Source code available on <a href="https://www.github.com/Lenjo08/eDuka" target="_blank"><span class="fab fa-github-alt mx-1"></span><u>GitHub</u></a></p>
+					<p class="h6">&copy <?php echo date("Y");?> All rights reserved.</p>
 				</div>
 				<hr>
 			</div>	
