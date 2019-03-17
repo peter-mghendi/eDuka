@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2019 at 11:53 AM
+-- Generation Time: Mar 17, 2019 at 11:51 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -35,6 +35,13 @@ CREATE TABLE `admins` (
   `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `username`, `password`, `role`) VALUES
+(1, 'admin1@example.com', 'password', 'admin');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +54,14 @@ CREATE TABLE `cart` (
   `product` varchar(255) NOT NULL,
   `quantity` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user`, `product`, `quantity`) VALUES
+(1, 'young_kip', '0000000', '1'),
+(3, 'young_kip', '0000002', '1');
 
 -- --------------------------------------------------------
 
@@ -75,7 +90,9 @@ INSERT INTO `orders` (`id`, `order_id`, `user`, `products`, `quantities`, `statu
 (4, 'lyNh6GyxH13k', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation', ''),
 (5, '9dXSHpjltGEN', 'buhT1f1c58vM', '0000000;0000004', '1;1', 'pending confirmation', ''),
 (6, 'bpncf6OrL9tu', 'buhT1f1c58vM', '0000002;0000000;0000001', '3;2;4', 'pending confirmation', ''),
-(7, 'Bp8Q9BKa98EB', 'jpUGbgHBuxKU', '0000000;0000003;0000002', '3;5;2', 'pending confirmation', '');
+(7, 'Bp8Q9BKa98EB', 'jpUGbgHBuxKU', '0000000;0000003;0000002', '3;5;2', 'pending confirmation', ''),
+(8, 'L5FSEQ99bs26', '6gaWNyhkd0v3', '0000000', '1', 'pending confirmation', 'pay on delivery'),
+(9, 'jQaYBLEgdMGz', 'nzEkTan1Jict', '0000000', '3', 'pending confirmation', 'pay on delivery');
 
 -- --------------------------------------------------------
 
@@ -135,7 +152,9 @@ INSERT INTO `users` (`id`, `token`, `name`, `email`, `password`, `status`) VALUE
 (8, 'FMhmNb2WBomM', 'Sam', 'sam@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
 (9, 'GxJ753FcspYl', 'Arjun', 'arjun@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
 (10, 'nzEkTan1Jict', 'Denzo', 'denzo@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
-(11, 'mEySc2TOaE1S', 'Mike', 'mike@mail.com', '15472cd29f632e34f039403f2e635f66', 'active');
+(11, 'mEySc2TOaE1S', 'Mike', 'mike@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
+(12, '5jy7aAb2eXMs', 'young_kip', 'koech@email.com', '25d55ad283aa400af464c76d713c07ad', 'active'),
+(13, '6gaWNyhkd0v3', 'Jacqueline', 'j@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'active');
 
 -- --------------------------------------------------------
 
@@ -154,11 +173,13 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`id`, `user`, `product`) VALUES
-(19, 'nzEkTan1Jict', '0000003'),
-(20, 'nzEkTan1Jict', '0000000'),
-(22, 'buhT1f1c58vM', '0000002'),
 (24, 'jpUGbgHBuxKU', '0000000'),
-(26, 'jpUGbgHBuxKU', '0000002');
+(26, 'jpUGbgHBuxKU', '0000002'),
+(27, '6gaWNyhkd0v3', '0000000'),
+(28, '6gaWNyhkd0v3', '0000002'),
+(29, 'nzEkTan1Jict', '0000000'),
+(30, 'nzEkTan1Jict', '0000002'),
+(31, 'buhT1f1c58vM', '0000003');
 
 --
 -- Indexes for dumped tables
@@ -208,19 +229,19 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -232,13 +253,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
