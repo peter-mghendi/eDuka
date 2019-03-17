@@ -1,4 +1,6 @@
 <?php 
+	$default_password = "Maseno2019";
+	global $default_password;
 	if (session_status() == PHP_SESSION_NONE) session_start();
 	if (isset($_GET['logout'])) session_destroy();
 	if (!isset($_SESSION['admin'])) header("location: login.php"); 
@@ -20,6 +22,7 @@
 ?> 
 	<div class="tab-content my-5">
   		<div class="tab-pane container active" id="users">
+		  <button class="btn my-3" data-toggle="modal" data-target="#newUserModal"><span class="fa fa-plus mr-2"></span>Register New User</button>
   			<table class="table table-hover datatable" role="table">
   				<thead>
   					<tr>
@@ -40,11 +43,25 @@
   								<td>$users_row[1]</td>
   								<td>$users_row[2]</td>
 	  							<td>
-	  								<button class='btn btn-primary mx-2'>Details</button>
+	  								<button class='btn btn-primary mx-2' data-toggle='modal' data-target='#userModal_$users_row[1]'>Details</button>
 	  								<button class='btn'><span class='fa fa-trash-alt m-2'></span></button>
 	  								<button class='btn'><span class='fa fa-undo-alt m-2'></span></button>
 	  							</td>
-  							</tr>";
+							  </tr>";
+							  echo
+							  "<div class='modal fade' id='userModal_$users_row[1]'>
+  								<div class='modal-dialog'>
+   									<div class='modal-content'>
+      									<div class='modal-header'>
+        									<h4 class='modal-title'>$users_row[2] - User Details</h4>
+        									<button type='button' class='close' data-dismiss='modal'>&times;</button>
+      									</div>
+      									<div class='modal-body'>
+      
+      									</div>
+      									<div class='modal-footer  d-flex'>
+        								<p class='mx-auto'>User ID: $users_row[1]</p>
+      							</div></div></div></div>";
   						}?>
   				</tbody>
   			</table>
