@@ -54,7 +54,7 @@
 </div>
 <?php 
 	include 'assets/php/_js.php';
-	include 'assets/php/_error.php';
+	include 'assets/php/_notify.php';
 ?>
 </body>
 </html>

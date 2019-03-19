@@ -17,24 +17,27 @@
 </head>
 <body>
 <?php 
-    include 'assets/php/nav.php';
-    include 'assets/php/modal.php';
+	include 'assets/php/_admin.php';
+	include 'assets/php/nav.php';
+	include 'assets/php/modal.php';
 ?> 
+<?php include 'assets/php/_notify.php'; ?>
 	<div class="tab-content my-5">
-  		<div class="tab-pane container active" id="users">
+  		<div class="tab-pane container <?php echo $_SESSION['active'] == 'users'?'active':'fade';?>" id="users">
 		  <?php include 'users.php'; ?>
   		</div>
-  		<div class="tab-pane container fade" id="products">
+  		<div class="tab-pane container <?php echo $_SESSION['active'] == 'products'?'active':'fade';?>" id="products">
 		  <?php include 'products.php'; ?>
   		</div>
-  		<div class="tab-pane container fade" id="admins">
+  		<div class="tab-pane container <?php echo $_SESSION['active'] == 'admins'?'active':'fade';?>" id="admins">
 		  <?php include 'admins.php'; ?>
   		</div>
-  		<div class="tab-pane container fade" id="actions">Actions</div>
+		<div class="tab-pane container <?php echo $_SESSION['active'] == 'actions'?'active':'fade';?>" id="actions">
+			  Actions
+		</div>
 	</div>
 <?php 
 	include 'assets/php/_js.php';
-	include 'assets/php/_error.php';
 ?>
 </body>
 </html>

@@ -1,13 +1,13 @@
 <button class="btn my-3" data-toggle="modal" data-target="#newUserModal"><span class="fa fa-plus mr-2"></span>Register New User</button>
 <div class="table-responsive">
-  			<table class="table table-hover datatable" role="table">
-  				<thead>
-  					<tr>
-  						<th></th>
-  						<th>User ID</th>
-  						<th>Username</th>
-	  					<th>Actions</th>
-  					</tr>		
+	<table class="table table-hover datatable" role="table">
+    	<thead>
+			<tr>
+				<th></th>
+				<th>User ID</th>
+				<th>Username</th>
+				<th>Actions</th>
+			</tr>		
   				</thead>
   				<tbody>
   					<?php 
@@ -21,12 +21,14 @@
   								<td>$users_row[2]</td>
 	  							<td>
 	  								<button class='btn btn-primary mx-2' data-toggle='modal' data-target='#userModal_$users_row[1]'>Details</button>
-	  								<button class='btn'><span class='fa fa-trash-alt m-2'></span></button>
-	  								<button class='btn'><span class='fa fa-undo-alt m-2'></span></button>
+                                      <a class='btn' href='index.php?&admin=0&action=delete&user=$users_row[1]'>
+                                        <span class='fa fa-trash-alt m-2'></span></a>
+                                      <a class='btn' href='index.php?&admin=0&action=reset&user=$users_row[1]'>
+                                        <span class='fa fa-undo-alt m-2'></span></a>
 	  							</td>
                               </tr>";
 							  echo
-							  "<div class='modal fade' id='userModal_$users_row[1]'>
+							  "<tr><td><div class='modal fade' id='userModal_$users_row[1]'>
   								<div class='modal-dialog'>
    									<div class='modal-content'>
                                         <div class='modal-header'>
@@ -39,7 +41,8 @@
       									"</div>
       									<div class='modal-footer  d-flex'>
         								<p class='mx-auto'>User ID: $users_row[1]</p>
-      							</div></div></div></div>";
+      							</div></div></div></div></td></tr>";
   						}?>
-  				</tbody>
-  			</table>
+  	    </tbody>
+    </table>
+</div>
