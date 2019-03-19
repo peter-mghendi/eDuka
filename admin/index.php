@@ -28,7 +28,7 @@
 		  <?php include 'products.php'; ?>
   		</div>
   		<div class="tab-pane container fade" id="admins">
-		  <?php include 'adins.php'; ?>
+		  <?php include 'admins.php'; ?>
   		</div>
   		<div class="tab-pane container fade" id="actions">Actions</div>
 	</div>
