@@ -1,9 +1,5 @@
 "use strict";
 
-// $(document).on("click", ".product-btn", function(){
-//     var productId = $(this).data('id');
-// })
-
 let dropbox;
 dropbox = document.getElementById("preview");
 const preview = document.getElementById("preview");

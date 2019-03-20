@@ -13,6 +13,12 @@
 
     function process_user_get($action){ 
         switch($action){
+            case 'change':
+                $_SESSION['notify'] = 
+                "<div class='alert alert-success alert-dismissible fade show'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Success!</strong> Account ${_GET['user']} status changed to ${_GET['status']}.
+                </div>";
             case 'delete':
                 # Delete user image
                 # Delete session
@@ -37,7 +43,6 @@
                 </div>";
         }
         $_SESSION['active'] = "users";
-        // echo $_SESSION['notify'];
         header("location: index.php");
     }
 

@@ -3,6 +3,7 @@
 <script src="../../js/webfont.js"></script>
 <script src="../assets/js/main.js"></script>
 <script src="../../datatables/datatables.min.js"></script>
+<script src="../../js/bootstrap-select.min.js"></script>
 
 <script>
 	"use strict";

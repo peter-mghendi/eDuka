@@ -7,4 +7,3 @@
 <link rel="stylesheet" href="../assets/css/forms.css">
 <link rel="stylesheet" href="../../datatables/datatables.min.css">
 <link rel="stylesheet" href="../../datatables/Buttons-1.5.4/css/buttons.dataTables.min.css">
-<!-- <link rel="stylesheet" href="../../datatables/Buttons-1.5.4/css/buttons.bootstrap4.min.css"> -->
