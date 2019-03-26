@@ -16,8 +16,8 @@ if (isset($_GET['order'])){
     $user = $_SESSION['token'];
     $productArray = array();
     $quantityArray = array();
-    $status = "pending confirmation";
-    $mode = "pay on delivery";
+    $status = "pending";
+    $mode = "on delivery";
 
     $compile_query = "SELECT * FROM cart WHERE user = '$user'";
     $compile_result = mysqli_query($db, $compile_query);

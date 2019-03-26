@@ -10,10 +10,12 @@
     }
 ?>
 <div id="category_bar" class="container-fluid collapse bg-dark">
-    <ul class="list-group">
+    <ol class="list-group">
+    <ol class="p-4 list-group">
       <?php foreach ($categories_distinct as $category_disinct) {
         $cat = http_build_query(array('category' => array($category_disinct)));
-      	echo "<li class='list-group-item sub-item set-title'><a class='btn text-light' href='browse.php?$cat'>$category_disinct</a></li>"; 
+        # echo "<li class='list-group-item sub-item set-title'><a class='btn text-light' href='browse.php?$cat'>$category_disinct</a></li>"; 
+        echo "<li class='sub-item set-title'><a class='btn text-light' href='browse.php?$cat'>$category_disinct</a></li>"; 
       } ?>
-    </ul>
+    </ol>
 </div>

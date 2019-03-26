@@ -20,12 +20,12 @@
                     <strong>Success!</strong> Account ${_GET['user']} status changed to ${_GET['status']}.
                 </div>";
             case 'delete':
-                # Delete user image
-                # Delete session
+                # unlink("../assets/images/users/${_GET['user']}.jpg");
                 # mysqli_query($db, "DELETE FROM wishlist WHERE user = '${_GET['user']}'");
                 # mysqli_query($db, "DELETE FROM cart WHERE user = '${_GET['user']}'");
                 # mysqli_query($db, "DELETE FROM orders WHERE user = '${_GET['user']}'");
                 # mysqli_query($db, "DELETE FROM users WHERE user = '${_GET['user']}'");
+                # if(isset($_SESSION["token"]) && $_SESSION["token"] == ${_GET['user']}) session_unregister("token");
                 $_SESSION['notify'] = 
                 "<div class='alert alert-success alert-dismissible fade show'>
                     <button type='button' class='close' data-dismiss='alert'>&times;</button>
