@@ -21,7 +21,7 @@
 
     <ul class='navbar-nav ml-auto'>
       <li class='nav-item'>
-        <a class='nav-link' data-toggle='pill' href='#actions'>Pending Actions <span class='badge badge-pill badge-secondary'>7</span></a>
+        <a class='nav-link' href='../'>Back to Site</a>
       </li>
       <li class='nav-item'>
         <a class='nav-link' href='index.php?logout=1'>Log Out</a>

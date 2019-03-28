@@ -32,9 +32,9 @@
   		<div class="tab-pane container <?php echo $_SESSION['active'] == 'admins'?'active':'fade';?>" id="admins">
 		  <?php include 'admins.php'; ?>
   		</div>
-		<div class="tab-pane container <?php echo $_SESSION['active'] == 'actions'?'active':'fade';?>" id="actions">
+		<!-- <div class="tab-pane container <?php # echo $_SESSION['active'] == 'actions'?'active':'fade';?>" id="actions">
 			  Actions
-		</div>
+		</div> -->
 	</div>
 <?php 
 	include 'assets/php/_js.php';

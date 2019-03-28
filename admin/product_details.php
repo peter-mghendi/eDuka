@@ -7,10 +7,6 @@
   </li>
 </ul>
 
-<?php
-	// db stuff
-?>
-
 <div class="tab-content">
     <form action="<?php $PHP_SELF ?>" method="post" class="form" role="form" id="productForm"></form>
     
@@ -22,7 +18,7 @@
             </div>
             <div class="custom-file">
                 <label class="custom-file-label" for="product_pic">Select a photo</label><br>
-                <input class="custom-file-input" type="file" name="new_pic" id="new_pic" accept=".png, .jpg" form="productForm">
+                <input class="custom-file-input" type="file" name="product_pic" id="product_pic" accept=".png, .jpg" form="productForm">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control-plaintext" placeholder="Brand" name="brand" value="<?php echo $products_row[2]?>" form="productForm">

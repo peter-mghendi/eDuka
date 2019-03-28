@@ -3,6 +3,7 @@
 	include 'assets/php/_connect.php';
 	if (isset($_POST['submit'])){
 		extract($_POST);
+		$pass = md5($pass);
 		$login_query = "SELECT * FROM admins WHERE username = '$user' AND password = '$pass'";
 		$login_result = mysqli_query($db, $login_query);
 		$login_count = mysqli_num_rows($login_result);

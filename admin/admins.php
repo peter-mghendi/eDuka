@@ -1,3 +1,4 @@
+<button class="btn my-3" data-toggle="modal" data-target="#newAdminModal"><span class="fa fa-plus mr-2"></span>Register New Admin</button>
 <table class="table table-hover datatable" role="table">
 	<thead>
 		<tr>
@@ -15,7 +16,7 @@
 				"<tr>
 					<td>$admins_row[1]</td>
 					<td class='set-title'>$admins_row[3]</td>
-					<td><button class='btn btn-primary'>Details</button></td>
+					<td><a class='btn'  href='index.php?&admin=2&action=delete&user=$admins_row[1]'><span class='fa fa-trash-alt'></span></a></td>
 				</tr>";
 			}?>
 	</tbody>

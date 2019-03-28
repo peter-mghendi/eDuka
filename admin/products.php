@@ -1,3 +1,4 @@
+<button class="btn my-3" data-toggle="modal" data-target="#newProductModal"><span class="fa fa-plus mr-2"></span>Add New Product</button>
 <table class="table table-hover datatable" role="table">
 	<thead>
 		<tr>
