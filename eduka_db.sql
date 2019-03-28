@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2019 at 11:51 AM
+-- Generation Time: Mar 27, 2019 at 08:22 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -60,8 +60,10 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user`, `product`, `quantity`) VALUES
-(1, 'young_kip', '0000000', '1'),
-(3, 'young_kip', '0000002', '1');
+(4, 'buhT1f1c58vM', '0000003', '1'),
+(6, 'buhT1f1c58vM', '0000002', '1'),
+(7, 'buhT1f1c58vM', '0000001', '1'),
+(8, 'XbbvPoy8oN74', '0000000', '1');
 
 -- --------------------------------------------------------
 
@@ -84,15 +86,15 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `order_id`, `user`, `products`, `quantities`, `status`, `mode`) VALUES
-(1, 'inRXBQCTjXQS', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending confirmation', ''),
-(2, 'X1E9g9dH37Oo', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending confirmation', ''),
-(3, 'RrR305RPaLo4', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation', ''),
-(4, 'lyNh6GyxH13k', 'nzEkTan1Jict', '0000002', '1', 'pending confirmation', ''),
-(5, '9dXSHpjltGEN', 'buhT1f1c58vM', '0000000;0000004', '1;1', 'pending confirmation', ''),
-(6, 'bpncf6OrL9tu', 'buhT1f1c58vM', '0000002;0000000;0000001', '3;2;4', 'pending confirmation', ''),
-(7, 'Bp8Q9BKa98EB', 'jpUGbgHBuxKU', '0000000;0000003;0000002', '3;5;2', 'pending confirmation', ''),
-(8, 'L5FSEQ99bs26', '6gaWNyhkd0v3', '0000000', '1', 'pending confirmation', 'pay on delivery'),
-(9, 'jQaYBLEgdMGz', 'nzEkTan1Jict', '0000000', '3', 'pending confirmation', 'pay on delivery');
+(1, 'inRXBQCTjXQS', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending', ''),
+(2, 'X1E9g9dH37Oo', 'nzEkTan1Jict', '0000000;0000003', '5;3', 'pending', ''),
+(3, 'RrR305RPaLo4', 'nzEkTan1Jict', '0000002', '1', 'pending', ''),
+(4, 'lyNh6GyxH13k', 'nzEkTan1Jict', '0000002', '1', 'pending', ''),
+(5, '9dXSHpjltGEN', 'buhT1f1c58vM', '0000000;0000004', '1;1', 'pending', ''),
+(6, 'bpncf6OrL9tu', 'buhT1f1c58vM', '0000002;0000000;0000001', '3;2;4', 'pending', ''),
+(7, 'Bp8Q9BKa98EB', 'jpUGbgHBuxKU', '0000000;0000003;0000002', '3;5;2', 'pending', ''),
+(8, 'L5FSEQ99bs26', '6gaWNyhkd0v3', '0000000', '1', 'pending', 'pay on delivery'),
+(9, 'jQaYBLEgdMGz', 'nzEkTan1Jict', '0000000', '3', 'pending', 'pay on delivery');
 
 -- --------------------------------------------------------
 
@@ -119,11 +121,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `token`, `brand`, `name`, `description`, `old_price`, `price`, `saletype`, `category`, `tags`, `status`) VALUES
-(1, '0000000', 'Lenovo', 'Ideapad 120S', 'The ultimate students\' laptop. Take it with you wherever.', '32000', '29000', 'featured;new;popular;flash', 'computing;laptops', '', 'available'),
-(2, '0000001', 'Logitech', 'Flexiboard', 'Roll up this keyboard and take it anywhere you go.', '5000', '3500', 'featured;popular;monthly;flash', 'accessories', '', 'available'),
-(3, '0000002', 'Hisense', '22\" HD Monitor', 'View everything in stunning HD with this new addition.', '27000', '22000', 'featured;new;popular;monthly;flash', '', '', 'available'),
-(4, '0000003', 'Logitech', 'Flexiboard', 'Roll up this keyboard and take anywhere you go.', '5000', '3500', 'new;monthly;flash', '', '', 'available'),
-(5, '0000004', 'Hisense', '22\" HD Monitor', 'View everything in stunning HD with this new addition.', '27000', '22000', 'new;popular;monthly', '', '', 'available');
+(1, '0000000', 'Lenovo', 'Ideapad 120S', 'The ultimate students\' laptop. Take it with you wherever.', '32000', '29000', 'featured;new;popular;flash', 'computing', 'laptop;computer', 'available'),
+(2, '0000001', 'Logitech', 'Flexiboard', 'Roll up this keyboard and take it anywhere you go.', '5000', '3500', 'featured;popular;monthly;flash', 'computing', 'keyboard;accessories', 'available'),
+(3, '0000002', 'Hisense', '22\" HD Monitor', 'View everything in stunning HD with this new addition.', '27000', '22000', 'featured;new;popular;monthly;flash', 'electronics', 'tv;television', 'available'),
+(4, '0000003', 'Logitech', 'Flexiboard', 'Roll up this keyboard and take anywhere you go.', '5000', '3500', 'new;monthly;flash', 'computing', 'keyboard;accessories', 'available'),
+(5, '0000004', 'Hisense', '22\" HD Monitor', 'View everything in stunning HD with this new addition.', '27000', '22000', 'new;popular;monthly', 'electronics', 'tv;television', 'available');
 
 -- --------------------------------------------------------
 
@@ -145,16 +147,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `token`, `name`, `email`, `password`, `status`) VALUES
-(2, 'j5Cms440NCpB', 'Peet', 'petey@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
-(4, 'ylLXPt7PbX8L', 'Daizy', 'daisy@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
-(5, 'jpUGbgHBuxKU', 'Paul', 'paul@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
 (6, 'buhT1f1c58vM', 'Hezron', 'hezron@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
-(8, 'FMhmNb2WBomM', 'Sam', 'sam@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
-(9, 'GxJ753FcspYl', 'Arjun', 'arjun@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
-(10, 'nzEkTan1Jict', 'Denzo', 'denzo@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
-(11, 'mEySc2TOaE1S', 'Mike', 'mike@mail.com', '15472cd29f632e34f039403f2e635f66', 'active'),
-(12, '5jy7aAb2eXMs', 'young_kip', 'koech@email.com', '25d55ad283aa400af464c76d713c07ad', 'active'),
-(13, '6gaWNyhkd0v3', 'Jacqueline', 'j@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'active');
+(14, 'XbbvPoy8oN74', 'Pete', 'peet@mail.com', '15472cd29f632e34f039403f2e635f66', 'active');
 
 -- --------------------------------------------------------
 
@@ -179,7 +173,9 @@ INSERT INTO `wishlist` (`id`, `user`, `product`) VALUES
 (28, '6gaWNyhkd0v3', '0000002'),
 (29, 'nzEkTan1Jict', '0000000'),
 (30, 'nzEkTan1Jict', '0000002'),
-(31, 'buhT1f1c58vM', '0000003');
+(31, 'buhT1f1c58vM', '0000003'),
+(32, 'buhT1f1c58vM', '0000000'),
+(33, 'buhT1f1c58vM', '0000002');
 
 --
 -- Indexes for dumped tables
@@ -235,7 +231,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -253,13 +249,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -40,7 +40,7 @@
             case 'reset':
                 if(isset($_GET['user'])){
                     # $reset_pass = md5($GLOBALS['default_password']);
-                    # mysqli_query($db, "UPDATE users SET password = '$reset_pass'");
+                    # mysqli_query($db, "UPDATE users SET password = '$reset_pass' WHERE token = '${_GET['user']}'");
                     # Send mail
                     $_SESSION['notify'] = 
                     "<div class='alert alert-success alert-dismissible fade show'>

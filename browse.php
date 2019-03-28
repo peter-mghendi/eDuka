@@ -34,7 +34,7 @@
 
         <div id="controls" class="collapse show"><div class="container"><form action="<?php $_PHP_SELF ?>" method="get" class="form">
         <div class="form-group row">
-                        <input type="hidden" id='page' name='page' class="form-control-plaintext px-3" value="<?php echo $_GET['page'] ?>" hidden="hidden">
+                        <input type="hidden" id='page' name='page' class="form-control-plaintext" value="<?php echo $_GET['page'] ?>" hidden="hidden">
                         <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><input type="search" id='search' name='search' 
                         class="form-control-plaintext px-3" placeholder='Search Term' value="<?php echo isset($search)?$search:'';?>"></div>
                         <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='category' name='category[]' multiple='multiple'
@@ -55,12 +55,12 @@
                         </select></div>
                         <div class="col-xs-12 col-sm-6 col-md-4 mb-3 form-inline"><div class="d-flex">
                             <div class="mr-auto">
-                                <input type="number" class="form-control-plaintext px-3" id='price_min' name='price_min' placeholder='Min Price' 
+                                <input type="number" class="form-control-plaintext" id='price_min' name='price_min' placeholder='Min Price' 
                                 min='0' value="<?php echo isset($price_min)?$price_min:'';?>" style="width: 100%">
                             </div>
                             <div class="mx-auto align-middle"><p class="px-2">to</p></div>
                             <div class="ml-auto">
-                                <input type="number" class="form-control-plaintext px-3" id='price_max' name='price_max' placeholder='Max Price' 
+                                <input type="number" class="form-control-plaintext" id='price_max' name='price_max' placeholder='Max Price' 
                                 min='0' value="<?php echo isset($price_min)?$price_min:'';?>" style="width: 100%"></div>
                         </div></div>
                         <div class="col-xs-12 col-sm-6 col-md-4 mb-3"><select class="selectpicker" id='saletype' name='saletype[]' multiple='multiple'

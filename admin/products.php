@@ -44,7 +44,11 @@
 				echo 
 									"</div>
 									<div class='modal-footer d-flex mt-2'>
-										<p class='mx-auto'>Product ID: $products_row[1]</p>
+										<div class='mx-auto'>
+											<input type='reset' class='btn btn-other' form='productForm' value='Reset'>
+											<input type='submit' class='btn btn-other' form='productForm' value='Save'>
+										</div>
+										<p>Product ID: $products_row[1]</p>
 									</div>
 								</div>
 							</div>

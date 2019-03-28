@@ -6,9 +6,9 @@
       <div class="dropdown-menu" id="dropdown-menu">
         <?php $cart_query = "SELECT * FROM cart WHERE user = '$token'"; $cart_result = mysqli_query($db, $cart_query) or die(mysqli_error()); $cart_count = mysqli_num_rows($cart_result)?>
           <a class="nav-item dropdown-item <?php echo ($this_page=="profile")?"active":"" ?>" data-toggle='modal' data-target='#profileModal'><span class="fa fa-user-circle"></span> Profile</a>
-          <a class="nav-item dropdown-item  <?php echo ($this_page=="wishlist")?"active":"" ?>" href="wishlist.php"><span class="fa fa-tasks"></span> Wishlist</a>
-          <a class="nav-item dropdown-item  <?php echo ($this_page=="cart")?"active":"" ?>" href="cart.php"><span class="fa fa-shopping-cart"></span> Cart <span class="badge badge-pill badge-secondary"><?php echo $cart_count;?></span></a>
-          <a class="nav-item dropdown-item  <?php echo ($this_page=="orders")?"active":"" ?>" href="orders.php"><span class="fa fa-box"></span> Orders </a>
+          <a class="nav-item dropdown-item <?php echo ($this_page=="wishlist")?"active":"" ?>" href="wishlist.php"><span class="fa fa-tasks"></span> Wishlist</a>
+          <a class="nav-item dropdown-item <?php echo ($this_page=="cart")?"active":"" ?>" href="cart.php"><span class="fa fa-shopping-cart"></span> Cart <span class="badge badge-pill badge-secondary"><?php echo $cart_count;?></span></a>
+          <a class="nav-item dropdown-item <?php echo ($this_page=="orders")?"active":"" ?>" href="orders.php"><span class="fa fa-box"></span> Orders </a>
       </div>
   </li>
   <li class="nav-item">

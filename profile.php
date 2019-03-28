@@ -41,7 +41,6 @@
 </div>
 
 <div class="tab-pane container fade" id="edit">
-    <!-- <div class="d-flex" id="preview"><img src="assets/images/users/<?php echo $profile_row[1] ?>.jpg" class="img-fluid rounded-circle profile-img mx-auto" alt="<?php echo $profile_row[2] ?>"></div> -->
     <div class="d-flex preview-empty" id="preview"><img src="" alt="" id="preview_img"><p><strong>Drag image file here to upload.</strong></p></div>
     <form class="form" role="form" method="post" action="<?php $_PHP_SELF ?>" enctype="multipart/form-data">
         <div class="form-group">
@@ -49,9 +48,9 @@
             <input type="text" class="form-control" name="token" value="<?php echo $profile_row[1] ?>" hidden>
         </div>
 
-        <div class="form-group">
-            <label for="new_pic">Or Select a photo</label><br>
-            <input type="file" name="new_pic" id="new_pic" accept=".png, .jpg" onchange="handleFiles(this.files)" hidden>
+        <div class="custom-file">
+            <label class="custom-file-label" for="new_pic">or select a photo</label><br>
+            <input class="custom-file-input" type="file" name="new_pic" id="new_pic" accept=".png, .jpg" onchange="handleFiles(this.files)">
         </div>
 
         <div class="form-group">

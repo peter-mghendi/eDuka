@@ -1,9 +1,9 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#view_<?php echo $products_row[1]; ?>">View</a>
+    <a class="nav-link active" data-toggle="tab" href="#general_<?php echo $products_row[1]; ?>">General</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#edit_<?php echo $products_row[1]; ?>">Edit</a>
+    <a class="nav-link" data-toggle="tab" href="#specifics_<?php echo $products_row[1]; ?>">Specifics</a>
   </li>
 </ul>
 
@@ -12,59 +12,66 @@
 ?>
 
 <div class="tab-content">
-	<div class="tab-pane container active" id="view_<?php echo $products_row[1]; ?>">
-    	<div class="row mt-2">
-    		<div class="col-md-4 col-sm-12 col-xs-12">Brand:</div>
-    		<div class="col-md-8 col-sm-12 col-xs-12"><?php echo $products_row[2]?></div>
-	    </div>
-    	<div class="row mt-2">
-		    <div class="col-md-4 col-sm-12 col-xs-12">Name:</div>
-      		<div class="col-md-8 col-sm-12 col-xs-12"><?php echo $products_row[3]?></div>
-    	</div>
-    	<div class="row mt-2">
-    		<div class="col-md-4 col-sm-12 col-xs-12">Status:</div>
-    		<div class="col-md-8 col-sm-12 col-xs-12">
-				<select class="selectpicker set-title" name='status' data-width="100%">
+    <form action="<?php $PHP_SELF ?>" method="post" class="form" role="form" id="productForm"></form>
+    
+	<div class="tab-pane container active" id="general_<?php echo $products_row[1]; ?>">
+        <div role="form" class="form mt-2">
+            <div class="form-group">
+                <input type="text" class="form-control" name="param" value="product" form="productForm" hidden>   
+                <input type="text" class="form-control" name="token" value="<?php echo $products_row[1]?>" form="productForm" hidden>
+            </div>
+            <div class="custom-file">
+                <label class="custom-file-label" for="product_pic">Select a photo</label><br>
+                <input class="custom-file-input" type="file" name="new_pic" id="new_pic" accept=".png, .jpg" form="productForm">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control-plaintext" placeholder="Brand" name="brand" value="<?php echo $products_row[2]?>" form="productForm">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control-plaintext" placeholder="Name" name="name" value="<?php echo $products_row[3]?>" form="productForm">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control-plaintext" placeholder="Category" name="category" value="<?php echo $products_row[8]?>" form="productForm">
+            </div>
+            <div class="form-group">
+				<select class="selectpicker set-title" name='status' data-width="100%" form="productForm">
         			<?php 
     					$status_list = array("available", "out of stock", "restocking");
-        					foreach($status_list as $status){
-		    					$selected = $status == $products_row[5]?"selected='selected'":"";
-	        					echo "<option class='set-title' $selected>$status</option>";
-    	      		} ?>
+        				foreach($status_list as $status){
+		    	    		$selected = $status == $products_row[10]?"selected='selected'":"";
+	        				echo "<option class='set-title' $selected>$status</option>";
+                        } 
+                    ?>
 	  			</select>
-			</div>	  
-    	</div>
+			</div>
+        </div>
     </div>
 
-    <div class="tab-pane container fade" id="edit_<?php echo $products_row[1]; ?>">
-		<form action="<? $PHP_SELF ?>" method="post" role="form" class="form mt-2">
+    <div class="tab-pane container fade" id="specifics_<?php echo $products_row[1]; ?>">
+		<div  role="form" class="form mt-2">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Brand" name="brand">
+                <textarea name="" id="" cols="30" rows="2" class="form-control-plaintext" placeholder="Description" name="description" form="productForm"><?php echo $products_row[4]?></textarea>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Name" name="name">
+                <input type="number" class="form-control-plaintext" placeholder="Old Price" name="old_price" value="<?php echo $products_row[5]?>" form="productForm">
             </div>
             <div class="form-group">
-                <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="Description" name="description"></textarea>
+                <input type="number" class="form-control-plaintext" placeholder="Price" name="price" value="<?php echo $products_row[6]?>" form="productForm">
             </div>
             <div class="form-group">
-                <input type="number" class="form-control" placeholder="Old Price" name="old_price">
+                <input type="text" class="form-control-plaintext" placeholder="Tags" name="tags" value="<?php echo $products_row[9]?>" form="productForm">
             </div>
             <div class="form-group">
-                <input type="number" class="form-control" placeholder="Price" name="price">
+                <select class="selectpicker" name="saletype" data-width="100%"  form="productForm" multiple>
+                    <?php 
+    					$saletype_list = array("featured", "new", "popular", "flash", "monthly");
+        				foreach($saletype_list as $saletype){
+		    	    		$selected = in_array($saletype, explode(";", $products_row[7]))?"selected='selected'":"";
+	        				echo "<option class='set-title' $selected>$saletype</option>";
+                        } 
+                    ?>
+                </select>
             </div>
-            <div class="form-group">
-                <select class="custom-select" name="saletype"  multiple></select>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Category" name="category">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Tags" name="tags">
-            </div>
-            <div class="form-group">
-                <select class="custom-select" name="status"></select>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
